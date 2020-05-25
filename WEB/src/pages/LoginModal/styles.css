@@ -1,0 +1,36 @@
+.logon-container{
+width: 100%;
+max-width: 1120px;
+margin: 0;
+align-items: center;
+margin-left: 60px;
+}
+
+.logon-container form{
+	width: 100%;
+	max-width: 350px;
+}
+
+.logon-container form h1{
+	margin-left: 10px;
+	margin-bottom: 50px;
+	text-align: center;
+	font-size: 35px;
+	color: #1ABC9C;
+}
+
+.logon-container form input{
+margin-bottom: 8px;
+	border-radius: 8px;
+
+}
+
+.logon-container form button{
+	margin-left: 5px;
+}
+
+.column {
+  float: left;
+  width: 100%;
+  padding: 100px;
+}

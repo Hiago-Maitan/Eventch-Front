@@ -1,0 +1,94 @@
+.evento-container{
+	width: 100%;
+    max-width: 1120px;
+    height: 100vh;
+    margin: 0;
+	
+	margin-top: 200px;
+	margin-left: 50px;
+}
+
+.evento-container .content{
+	width: 100%;
+}
+
+.evento-container .content .one section{
+    width: 100%;
+    max-width: 600px;
+}
+
+.evento-container .content .one section h1 {
+	margin: 64px 0 32px;
+	font-size: 32px; 
+}
+
+.evento-container .content .one section h2 {
+	color: #4D4D4D;
+    font-size: 22px;
+}
+
+.evento-container .content .one p{
+margin-top: 30px;
+margin-bottom: 150px;
+font-size: 20px;
+}
+
+.evento-container .content .container-logo{
+     width: 100%;
+    max-width: 600px;
+    height: 100;
+    margin: 0;
+}
+
+.evento-container .content .container-logo .logo-evento{
+     background: #1ABC9C;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 0px 0px 10px 10px;
+    height: 500px; 
+    width: 400px;
+    margin-left: 130%;
+    margin-top: -643px;
+    margin-bottom: 50px;
+}
+
+.evento-container .content .container-logo .logo-evento h1{
+    color: #1ABC9C;
+}
+
+.evento-container .content .container-logo .logo-evento h2{
+    color: white;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.evento-container .content .container-logo .logo-evento p{
+    color: white;
+    margin-top: 140px;
+    margin-right: 10px;
+    margin-left: 20px;
+    margin-bottom: 110px;
+
+}
+
+.evento-container .content .carousel{
+   margin-bottom: 40px;
+   margin-left: 20px;
+}
+
+
+.border-btnIngresso{
+    position: initial;
+    width: 120%; 
+    height: 100px;
+    background-color: #16A085;
+}
+
+.border-btnIngresso .btnIngresso{
+    margin-left: 70%;
+    width: 20%;
+    margin-top: 20px;
+    border-radius: 8px;
+    background-color: white;
+    color: black;
+
+}

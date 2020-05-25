@@ -1,0 +1,22 @@
+.middle[type=text] {
+    width: 50%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 41px 45px 45px 0px;
+    font-size: 24px;
+    background-color: #FFFFFF;
+    background-position: 600px 8px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    margin-top: 20%;
+    margin-left: 25%;
+    /*  */
+}
+
+.user svg{
+    margin-right: 28px;
+    margin-bottom: -20px;
+}
+
+
+
