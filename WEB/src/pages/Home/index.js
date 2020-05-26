@@ -13,6 +13,9 @@ import LogonUser from '../LogonUser';
 
 import api from '../../services/api';
 
+//new toolbar
+import Toolbar from '../../components/Toolbar/Toolbar'
+
 export default function Home(){
 
   const color = {
@@ -25,9 +28,10 @@ export default function Home(){
   const handleShow = () => setShow(true);
 
 	return (
-
+    
 		<div className="line">
-            <div className="navbar">
+      <Toolbar/>
+            {/*<div className="navbar">
 
               <Link className="logo" to="/"></Link>
 
@@ -56,7 +60,7 @@ export default function Home(){
                            Login
                       </Link>
                     </div>
-            </div>
+  </div>*/}
 
              <>
       <Modal show={show} onHide={handleClose}>
