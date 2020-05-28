@@ -28,8 +28,8 @@ function UserInfo(){
         img = <img src={userImage}/>
 
         content =  <div className="login-info">
-                        <span className="title">Login</span>
-                        <span className="login-sub-title">Não possui login?</span>
+                        <a href="/" className="title">Login</a>
+                        <a href="/RegisterUser" className="login-sub-title">Não possui login?</a>
                     </div>
     }
 

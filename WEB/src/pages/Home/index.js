@@ -47,34 +47,6 @@ export default function Home() {
       <Toolbar handleSideOpen={handleSideOpen} />
       <SideDrawer show={sideDrawerOpen} />
       {backdrop}
-
-      
-
-        <div className="dropdown dropOne">
-
-          <Link className="user" onClick={handleShow}>
-            <FiUser size={40} color="#1ABC9C" />
-                           Login
-                      </Link>
-        </div>
-      
-
-      <>
-        <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title style={color}>Faça seu Login</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-
-            <LogonUser />
-
-
-          </Modal.Body>
-          <Modal.Footer>
-
-          </Modal.Footer>
-        </Modal>
-      </>
-    </div>
+  </div>
   )  
 }

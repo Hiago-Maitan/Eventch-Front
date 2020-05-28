@@ -5,26 +5,37 @@
     margin: 0;
     box-sizing: border-box;
     display: flex;
+    justify-content: end;
     align-items: center;
 }
 
 .login-content img{
     width: 45px;
     height: 45px;
+    margin: .8rem;
 }
 
 .login-info{
-    margin: .8rem;
     display: flex;
     flex-direction: column;
 }
 
-.title{
+.login-info a{
+    color: var(--third-color)
+}
 
+.login-info a:hover,
+.login-info a:active{
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.title{
+    color: var(--primary-color);
+    text-decoration: none;
 }
 
 .login-sub-title{
     font-size: .7rem;
-    text-decoration: underline;
-    color: var(--primary-color);
+    color: var(--primary-color) !important;
 }
