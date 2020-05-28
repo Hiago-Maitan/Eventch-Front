@@ -1,7 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 
 import './styles.css';
+import LogonUser from '../LogonUser';
+
+import Modal from 'react-bootstrap/Modal';
 import { FiUser, FiLogIn } from 'react-icons/fi'
 import { Parallax } from "react-parallax";
 import {Navbar, Nav, NavDropdown, Form, FormControl, Button} from 'react-bootstrap'
@@ -16,9 +19,6 @@ import { MDBJumbotron, MDBBtn, MDBContainer, MDBRow, MDBCol, MDBCardTitle, MDBIc
 
 
 function groupIntoThrees (children) {
-
-
-
 
   const output = []
   let currentGroup = []
@@ -52,13 +52,18 @@ const insideStyles = {
 
   const image3 =
   "https://brightcove04pmdo-a.akamaihd.net/5104226627001/5104226627001_5297440765001_5280261645001-vs.jpg?pubId=5104226627001&videoId=5280261645001";
-
-
-
-
   
 
 export default function Home(){
+
+   const color = {
+    color: '#1ABC9C'
+  };
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
     return (
 <div> 
@@ -103,15 +108,30 @@ export default function Home(){
                         
                     <div className="dropdown dropOne">
 
-                      <Link className="user" to="/login">
-                        <FiUser size={40}  color="#1ABC9C" />
+                     <Link className="user" onClick={handleShow}>
+                        <FiUser size={40} color="#1ABC9C" />
                            Login
                       </Link>
 
                       
                     </div>
             </div>
+ <>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title style={color}>Faça seu Login</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
 
+        <LogonUser/>
+
+        
+        </Modal.Body>
+        <Modal.Footer>
+         
+        </Modal.Footer>
+      </Modal>
+    </>
 
 		</div>
 <div>

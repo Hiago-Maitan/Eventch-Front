@@ -12,6 +12,8 @@ import RegisterEvent from './pages/RegisterEvent';
 import RegistroUsuario from './pages/RegistroUsuario';
 import RegistroEmpresa from './pages/RegistroEmpresa';
 
+
+
 export default function Routes(){
 	return (
 <BrowserRouter>
@@ -32,6 +34,9 @@ export default function Routes(){
      <Route path="/detalhes" component={Detalhes}/>
 
      <Route path="/RegisterEvent" component={RegisterEvent}/>
+
+          
+
 
 
   </Switch>   
