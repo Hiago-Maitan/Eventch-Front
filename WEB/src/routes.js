@@ -4,7 +4,6 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 // imports páginas
 
 import Home from './pages/Home';
-import LogonUser from './pages/LogonUser';
 import Evento from './pages/Evento';
 import Ingressos from './pages/Ingressos';
 import Detalhes from './pages/Detalhes';
@@ -21,8 +20,6 @@ export default function Routes(){
      
      <Route path="/" exact component={Home} />
      
-     <Route path="/login" component={LogonUser} />
-
      <Route path="/evento" component={Evento}/>
 
      <Route path="/registroUsuario" component={RegistroUsuario}/>

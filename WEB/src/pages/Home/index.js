@@ -2,17 +2,17 @@ import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 
 import './styles.css';
-import LogonUser from '../LogonUser';
+import Login from '../../components/Login/';
 
 import Modal from 'react-bootstrap/Modal';
 import { FiUser, FiLogIn } from 'react-icons/fi'
 import { Parallax } from "react-parallax";
-import {Navbar, Nav, NavDropdown, Form, FormControl, Button} from 'react-bootstrap'
 import {useHistory, Link} from 'react-router-dom';
 import Slider from "react-slick";
 //import MultipleItems from './carosel';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import { Table } from 'semantic-ui-react'
+import {Navbar, Nav, NavDropdown, Form, FormControl, Button} from 'react-bootstrap';
+import { Table } from 'semantic-ui-react';
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import { MDBJumbotron, MDBBtn, MDBContainer, MDBRow, MDBCol, MDBCardTitle, MDBIcon } from "mdbreact";
 
@@ -75,7 +75,7 @@ export default function Home(){
 
 
     <div style={styles}>
-    <Parallax     bgImage={require('../Image/Teste.jpg')} strength={500}>
+    <Parallax     bgImage={require('../../Image/Teste.jpg')} strength={500}>
 
 <h1 className="blocktext">Não procure por eventos, a eventech fará isso por você.</h1>
       <div style={{ height: 600 }}>
@@ -84,7 +84,9 @@ export default function Home(){
 
 
 		<div className="line">
-            <div className="navbar">
+            
+
+<div className="navbar">
 
               <Link className="logo" to="/"></Link>
 
@@ -123,7 +125,7 @@ export default function Home(){
         </Modal.Header>
         <Modal.Body>
 
-        <LogonUser/>
+        <Login/>
 
         
         </Modal.Body>
@@ -133,11 +135,8 @@ export default function Home(){
       </Modal>
     </>
 
-		</div>
+    </div>
 <div>
-
-
-
 
 
 
