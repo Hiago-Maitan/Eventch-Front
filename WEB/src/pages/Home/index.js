@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 import './styles.css';
 
 import { FiUser, FiLogIn } from 'react-icons/fi'
 
-import {useHistory, Link} from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 
 import Modal from 'react-bootstrap/Modal';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
@@ -15,8 +15,12 @@ import api from '../../services/api';
 
 //new toolbar
 import Toolbar from '../../components/Toolbar/Toolbar'
+import SideDrawer from '../../components/SideDrawer/SideDrawer';
+import Backdrop from '../../components/Backdrop/Backdrop';
+import { render } from '@testing-library/react';
+import UserInfo from '../../components/UserInfo/UserInfo';
 
-export default function Home(){
+export default function Home() {
 
   const color = {
     color: '#1ABC9C'
@@ -27,59 +31,50 @@ export default function Home(){
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-	return (
-    
-		<div className="line">
-      <Toolbar/>
-            {/*<div className="navbar">
+  const [sideDrawerOpen, setOpen] = useState(false);
 
-              <Link className="logo" to="/"></Link>
+  const handleSideClose = () => setOpen(false);
+  const handleSideOpen = () => setOpen(true);
 
-                <div className="dropdown dropOne">
-                 <button className="dropbtn">Eventos </button>
+  let backdrop;
 
-                   <div className="dropdown-content">
-                      <a href="/registerEvent">Publicar Evento</a>
-                      <a href="#">Em Destaque</a>
-                    </div>
-                </div>
+  if (sideDrawerOpen) {
+    backdrop = <Backdrop click={handleSideClose} />
+  }
 
-                <div className="dropdown dropTwo">
-                    <button className="dropbtn">Sobre Nós </button>
+  return (
+    <div className="line">
+      <Toolbar handleSideOpen={handleSideOpen} />
+      <SideDrawer show={sideDrawerOpen} />
+      {backdrop}
 
-                    <div className="dropdown-content">
-                      <a href="#">Projeto</a>
-                      <a href="#">Quem Somos</a>
-                    </div>
-                </div>
-                        
-                    <div className="dropdown dropOne">
+      
 
-                      <Link className="user" onClick={handleShow}>
-                        <FiUser size={40} color="#1ABC9C" />
+        <div className="dropdown dropOne">
+
+          <Link className="user" onClick={handleShow}>
+            <FiUser size={40} color="#1ABC9C" />
                            Login
                       </Link>
-                    </div>
-  </div>*/}
+        </div>
+      
 
-             <>
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title style={color}>Faça seu Login</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
+      <>
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title style={color}>Faça seu Login</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
 
-        <LogonUser/>
+            <LogonUser />
 
-        
-        </Modal.Body>
-        <Modal.Footer>
-         
-        </Modal.Footer>
-      </Modal>
-    </>
 
-		</div>
-		)
+          </Modal.Body>
+          <Modal.Footer>
+
+          </Modal.Footer>
+        </Modal>
+      </>
+    </div>
+  )  
 }
-

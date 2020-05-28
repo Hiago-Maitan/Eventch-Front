@@ -1,0 +1,30 @@
+@import '../../colors.css';
+
+.login-content{
+    padding:0;
+    margin: 0;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+.login-content img{
+    width: 45px;
+    height: 45px;
+}
+
+.login-info{
+    margin: .8rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.title{
+
+}
+
+.login-sub-title{
+    font-size: .7rem;
+    text-decoration: underline;
+    color: var(--primary-color);
+}

@@ -1,0 +1,30 @@
+@import "../../colors.css";
+
+.toggle-btn{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 24px;
+    width: 30px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.toggle-btn:focus{
+    outline: none;
+}
+
+.toggle-btn-line{
+    width:30px;
+    height: 2.5px;
+    background: var(--secondary-color);
+}
+
+@media (min-width:769px){
+    .toggle-btn{
+        display:none;
+    }
+}
