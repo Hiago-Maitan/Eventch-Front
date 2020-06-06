@@ -40,6 +40,7 @@
 
 .menu-item ul{
     display: flex;
+   
     list-style: none;
     margin-bottom: 0rem;
     position: absolute;
@@ -50,26 +51,22 @@
 .menu-item li{
     padding: 1rem 3rem 1rem 3rem;
 }
-
 .menu-item a:hover,
 .menu-item a:active{
     color: var(--primary-color);
     text-decoration: none;
 }
-
 .drawer-placeholder{
     position: fixed;
     left: 0;
     top: 0;
     padding: 1.36rem;
 }
-
 .login-placeholder{
     margin: 1rem 5rem 1rem 1rem;
 }
-
 @media (max-width: 768px){
     .menu-item{
         display: none;
     }
-}
+} 

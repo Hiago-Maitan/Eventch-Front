@@ -1,16 +1,13 @@
 import React from 'react';
-import './Toolbar.css';
-import logo from '../../components/Toolbar/tickets.png';
-
-
+import './Toolbar.css'
+import logo from '../../components/Toolbar/tickets.png'
 //Side Drawer
 import DrawerToggleButton from '../SideDrawer/DrawerToggleButton';
 import UserInfo from '../UserInfo/UserInfo';
-
 const toolbar = props => (
     <header>
-        <nav className="bg-nav">
-            <div className="drawer-placeholder">
+         <nav className="bg-nav">
+     <div className="drawer-placeholder">
                 <DrawerToggleButton click={props.handleSideOpen}/>
             </div>
             <div className="bg-logo"><a href="/Ingressos"><img src={logo} className="img-logo"/></a></div>
@@ -27,4 +24,4 @@ const toolbar = props => (
     </header>
 )
 
-export default toolbar;
+export default toolbar; 

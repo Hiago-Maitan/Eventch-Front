@@ -15,7 +15,7 @@ import {Navbar, Nav, NavDropdown, Form, FormControl, Button} from 'react-bootstr
 import { Table } from 'semantic-ui-react';
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import { MDBJumbotron, MDBBtn, MDBContainer, MDBRow, MDBCol, MDBCardTitle, MDBIcon } from "mdbreact";
-
+import Toolbar from '../../components/Toolbar/Toolbar'
 
 
 function groupIntoThrees (children) {
@@ -86,8 +86,9 @@ export default function Home(){
 		<div className="line">
             
 
-<div className="navbar">
 
+<Toolbar/>{/* 
+<div className="navbar">
               <Link className="logo" to="/"></Link>
 
                 <div className="dropdown dropOne">
@@ -118,6 +119,7 @@ export default function Home(){
                       
                     </div>
             </div>
+            */}
  <>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
