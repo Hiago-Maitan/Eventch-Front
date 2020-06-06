@@ -4,7 +4,7 @@ import './UserInfo.css'
 import userImage from './user.png'
 
 function UserInfo(){
-    const [isLogged,setLogged] = useState(false);
+    const [isLogged,setLogged] = useState(true);
     const [user,setUser] = useState({});
 
     let content
