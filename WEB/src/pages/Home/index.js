@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 
 import './styles.css';
@@ -7,7 +7,7 @@ import Login from '../../components/Login/';
 import Modal from 'react-bootstrap/Modal';
 import { FiUser, FiLogIn } from 'react-icons/fi'
 import { Parallax } from "react-parallax";
-import { useHistory, Link } from 'react-router-dom';
+import {useHistory, Link} from 'react-router-dom';
 import Slider from "react-slick";
 //import MultipleItems from './carosel';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
@@ -54,14 +54,7 @@ const insideStyles = {
   "https://brightcove04pmdo-a.akamaihd.net/5104226627001/5104226627001_5297440765001_5280261645001-vs.jpg?pubId=5104226627001&videoId=5280261645001";
   
 
-//new toolbar
-import Toolbar from '../../components/Toolbar/Toolbar'
-import SideDrawer from '../../components/SideDrawer/SideDrawer';
-import Backdrop from '../../components/Backdrop/Backdrop';
-import { render } from '@testing-library/react';
-import UserInfo from '../../components/UserInfo/UserInfo';
-
-export default function Home() {
+export default function Home(){
 
    const color = {
     color: '#1ABC9C'
@@ -72,7 +65,7 @@ export default function Home() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const [sideDrawerOpen, setOpen] = useState(false);
+    return (
 <div> 
 
     
@@ -89,29 +82,59 @@ export default function Home() {
       </div>
     </Parallax>
 
+
+		<div className="line">
             
 
-            <div className="navbar">
-                      <Link className="user" onClick={handleShow}>
+<div className="navbar">
+
+              <Link className="logo" to="/"></Link>
+
+                <div className="dropdown dropOne">
+                 <button className="dropbtn">Eventos </button>
+
+                   <div className="dropdown-content">
+                      <a href="#">Publicar Evento</a>
+                      <a href="#">Em Destaque</a>
+                    </div>
+                </div>
+
+                <div className="dropdown dropTwo">
+                    <button className="dropbtn">Sobre Nós </button>
+
+                    <div className="dropdown-content">
+                      <a href="#">Projeto</a>
+                      <a href="#">Quem Somos</a>
+                    </div>
+                </div>
+                        
+                    <div className="dropdown dropOne">
+
+                     <Link className="user" onClick={handleShow}>
+                        <FiUser size={40} color="#1ABC9C" />
+                           Login
+                      </Link>
 
                       
-             <>
+                    </div>
+            </div>
+ <>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title style={color}>Faça seu Login</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+
         <Login/>
 
-  const handleSideClose = () => setOpen(false);
-  const handleSideOpen = () => setOpen(true);
+        
+        </Modal.Body>
+        <Modal.Footer>
+         
+        </Modal.Footer>
+      </Modal>
+    </>
 
-  let backdrop;
-
-  if (sideDrawerOpen) {
-    backdrop = <Backdrop click={handleSideClose} />
-  }
-
-  return (
-    <div className="line">
-      <Toolbar handleSideOpen={handleSideOpen} />
-      <SideDrawer show={sideDrawerOpen} />
-      {backdrop}
     </div>
 <div>
 
@@ -207,5 +230,5 @@ export default function Home() {
 
 
 
-  )  
+		)
 }
