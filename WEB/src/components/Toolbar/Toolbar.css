@@ -69,4 +69,7 @@
     .menu-item{
         display: none;
     }
+    .login-placeholder{
+        display: none;
+    }
 } 

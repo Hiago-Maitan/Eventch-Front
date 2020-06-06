@@ -16,7 +16,8 @@ import { Table } from 'semantic-ui-react';
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import { MDBJumbotron, MDBBtn, MDBContainer, MDBRow, MDBCol, MDBCardTitle, MDBIcon } from "mdbreact";
 import Toolbar from '../../components/Toolbar/Toolbar'
-
+import SideDrawer from '../../components/SideDrawer/SideDrawer';
+import Backdrop from '../../components/Backdrop/Backdrop'
 
 function groupIntoThrees (children) {
 
@@ -65,14 +66,21 @@ export default function Home(){
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  //Responsividade da Toolbar
+
+  const [sideDrawerOpen, setOpen] = useState(false);
+
+  const handleSideClose = () => setOpen(false);
+  const handleSideOpen = () => setOpen(true);
+
+  let backdrop;
+
+  if (sideDrawerOpen) {
+    backdrop = <Backdrop click={handleSideClose} />
+  }
+
     return (
 <div> 
-
-    
-<br></br>
-<br></br>
-<br></br><br></br>
-
 
     <div style={styles}>
     <Parallax     bgImage={require('../../Image/Teste.jpg')} strength={500}>
@@ -87,7 +95,11 @@ export default function Home(){
             
 
 
-<Toolbar/>{/* 
+    <Toolbar handleSideOpen={handleSideOpen}/>
+    <SideDrawer show={sideDrawerOpen}/>
+    {backdrop}
+    
+    {/* 
 <div className="navbar">
               <Link className="logo" to="/"></Link>
 
