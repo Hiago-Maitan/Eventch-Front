@@ -49,6 +49,9 @@ export default function Detalhes (props) {
 <br></br>
 <br></br>
 <br></br>
+<br></br>
+<br></br>
+<br></br>
 
     <div>
 

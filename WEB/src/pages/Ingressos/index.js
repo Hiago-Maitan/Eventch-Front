@@ -7,8 +7,6 @@ import ImageUploader from 'react-images-upload';
 
 import Modal from 'react-bootstrap/Modal';
 
-import LogonUser from '../LogonUser';
-
 import { FiUser, FiLogIn } from 'react-icons/fi'
 import {useHistory, Link} from 'react-router-dom';
 

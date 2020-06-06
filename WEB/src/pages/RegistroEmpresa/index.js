@@ -3,6 +3,8 @@ import {useHistory, Link} from 'react-router-dom';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import { Col, Row,} from 'reactstrap';
 
+import './style.css';
+
 import { FiLogIn, FiUser } from 'react-icons/fi'
 
 
@@ -90,6 +92,9 @@ class RegistroEmpresa  extends React.Component{
 
 <div >
       <Form>         
+<br></br>
+<br></br>    
+<br></br>
 <br></br>
 <br></br>    
 <br></br>

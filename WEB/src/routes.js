@@ -4,13 +4,16 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 // imports páginas
 
 import Home from './pages/Home';
-import LogonUser from './pages/LogonUser';
 import Evento from './pages/Evento';
 import Ingressos from './pages/Ingressos';
 import Detalhes from './pages/Detalhes';
 import RegisterEvent from './pages/RegisterEvent';
 import RegistroUsuario from './pages/RegistroUsuario';
 import RegistroEmpresa from './pages/RegistroEmpresa';
+
+import PerfilUsuario from './pages/PerfilUsuario';
+import PerfilEmpresa from './pages/PerfilEmpresa';
+
 
 export default function Routes(){
 	return (
@@ -19,8 +22,6 @@ export default function Routes(){
      
      <Route path="/" exact component={Home} />
      
-     <Route path="/login" component={LogonUser} />
-
      <Route path="/evento" component={Evento}/>
 
      <Route path="/registroUsuario" component={RegistroUsuario}/>
@@ -31,7 +32,11 @@ export default function Routes(){
 
      <Route path="/detalhes" component={Detalhes}/>
 
-     <Route path="/RegisterEvent" component={RegisterEvent}/>
+     <Route path="/registerEvent" component={RegisterEvent}/>
+     
+     <Route path="/perfilUsuario" component={PerfilUsuario}/>
+
+          <Route path="/perfilEmpresa" component={PerfilEmpresa}/>
 
 
   </Switch>   
