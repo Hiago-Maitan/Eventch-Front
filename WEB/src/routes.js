@@ -11,6 +11,8 @@ import RegisterEvent from './pages/RegisterEvent';
 import RegistroUsuario from './pages/RegistroUsuario';
 import RegistroEmpresa from './pages/RegistroEmpresa';
 
+import LogonUser from './pages/LogonUser';
+
 import PerfilUsuario from './pages/PerfilUsuario';
 import PerfilEmpresa from './pages/PerfilEmpresa';
 
@@ -24,6 +26,8 @@ export default function Routes(){
      
      <Route path="/evento" component={Evento}/>
 
+     <Route path="/login" component={LogonUser}/>
+
      <Route path="/registroUsuario" component={RegistroUsuario}/>
 
      <Route path="/registroEmpresa" component={RegistroEmpresa}/>
@@ -36,7 +40,7 @@ export default function Routes(){
      
      <Route path="/perfilUsuario" component={PerfilUsuario}/>
 
-          <Route path="/perfilEmpresa" component={PerfilEmpresa}/>
+    <Route path="/perfilEmpresa" component={PerfilEmpresa}/>
 
 
   </Switch>   
