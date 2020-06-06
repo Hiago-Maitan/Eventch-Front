@@ -11,6 +11,8 @@ import RegisterEvent from './pages/RegisterEvent';
 import RegistroUsuario from './pages/RegistroUsuario';
 import RegistroEmpresa from './pages/RegistroEmpresa';
 
+import PerfilUsuario from './pages/PerfilUsuario';
+import PerfilEmpresa from './pages/PerfilEmpresa';
 
 
 export default function Routes(){
@@ -30,10 +32,11 @@ export default function Routes(){
 
      <Route path="/detalhes" component={Detalhes}/>
 
-     <Route path="/RegisterEvent" component={RegisterEvent}/>
+     <Route path="/registerEvent" component={RegisterEvent}/>
+     
+     <Route path="/perfilUsuario" component={PerfilUsuario}/>
 
-          
-
+          <Route path="/perfilEmpresa" component={PerfilEmpresa}/>
 
 
   </Switch>   
