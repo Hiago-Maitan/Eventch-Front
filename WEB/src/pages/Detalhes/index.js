@@ -63,6 +63,8 @@ export default function Detalhes (props) {
 <Col md={9}>
 <FormGroup>
 
+<br></br>
+
 <h2>Conte mais detalhes</h2>
 
 <br></br>
@@ -80,6 +82,7 @@ export default function Detalhes (props) {
 <option>Curso</option>
 <option>WorkShops</option>
 <option>Palestra</option>
+<option>Outros</option>
 </Input>
 </Col>
 </FormGroup>
@@ -103,16 +106,6 @@ export default function Detalhes (props) {
 </Col>
 
 
-<Col sm={6}>
-  <FormGroup>
-    <h5>Descrição do evento: <span style={color}>*</span></h5>
-        <Input type="textarea" 
-        name="text" 
-        id="exampleText" 
-        />
-  </FormGroup>      
-</Col>
-
 <Col sm={3}>
   <FormGroup>
     <h5>CEP: <span style={color}>*</span></h5>
@@ -122,7 +115,79 @@ export default function Detalhes (props) {
         />
   </FormGroup>      
 </Col>
+
+<Col sm={3}>
+  <FormGroup>
+    <h5>UF: <span style={color}>*</span></h5>
+        <Input type="text" 
+        name="uf" 
+        id="uf" 
+        />
+  </FormGroup>      
+</Col>
+
 </Row>
+
+<Row form>
+<Col sm={3}>
+  <FormGroup>
+    <h5>Logadouro: <span style={color}>*</span></h5>
+      <Input type="text" 
+      name="logadouro" 
+      id="logadouro"
+      />
+  </FormGroup>
+</Col>
+
+<Col sm={3}>
+  <FormGroup>
+    <h5>Bairro: <span style={color}>*</span></h5>
+      <Input type="text" 
+      name="bairro" 
+      id="bairro"
+      />
+  </FormGroup>
+</Col>
+
+<Col sm={3}>
+  <FormGroup>
+    <h5>Complemento: <span style={color}>*</span></h5>
+        <Input type="text" 
+        name="complemento" 
+        id="complemento" 
+        />
+  </FormGroup>      
+</Col>
+
+<Col sm={2}>
+  <FormGroup>
+    <h5>Número: <span style={color}>*</span></h5>
+        <Input type="number" 
+        name="numero" 
+        id="numero" 
+        />
+  </FormGroup>      
+</Col>
+</Row>
+
+<br></br>
+
+<h4>3 - Como vai ser o seu evento?</h4>
+
+<br></br>
+
+<Row Form>
+<Col sm={11}>
+  <FormGroup>
+    <h5>Descrição: <span style={color}>*</span></h5>
+        <Input type="textarea" 
+        name="text" 
+        id="exampleText" 
+        />
+  </FormGroup>      
+</Col>
+</Row>
+
 
 </div>
 

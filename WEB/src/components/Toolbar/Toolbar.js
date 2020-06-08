@@ -10,7 +10,7 @@ const toolbar = props => (
      <div className="drawer-placeholder">
                 <DrawerToggleButton click={props.handleSideOpen}/>
             </div>
-            <div className="bg-logo"><a href="/Ingressos"><img src={logo} className="img-logo"/></a></div>
+            <div className="bg-logo"><a href="/"><img src={logo} className="img-logo"/></a></div>
             <div className="menu-item">
                 <ul>
                     <li><a href="/" >Eventos</a></li>

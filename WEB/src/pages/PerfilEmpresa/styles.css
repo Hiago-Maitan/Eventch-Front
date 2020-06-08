@@ -84,25 +84,6 @@
     margin-top: 0px;
 }
 
-
-/* .container-historico .hist1 {
-    display: flex;
-    margin-left: 200px;
-    font-size: 20px;
+.line .color-container .company {
+    margin-top: 0px;
 }
-
-.container-historico .hist1 .nome-evento {
-    color: rgb(33, 138, 117);
-    font-size: 18px;
-    margin-left: -200px;
-}
-
-.container-historico .hist1 .empresa {
-    margin-left: 70px;
-    font-size: 18px;
-}
-
-.container-historico .hist1 h5+h5 {
-    margin-left: 160px;
-    font-size: 18px;
-} */
