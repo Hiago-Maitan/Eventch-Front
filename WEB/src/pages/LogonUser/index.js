@@ -26,6 +26,7 @@ export default function Logon() {
       const response = await api.post('#', email, password);
 
       history.push('/');
+      
       alert('Login realizado com sucesso !');
 
     } catch (err) {
