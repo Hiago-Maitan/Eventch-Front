@@ -34,7 +34,7 @@ export default function Routes() {
 
         <Route path="/login" component={LogonUser} />
 
-        <Route path="/registroUsuario" component={RegistroUsuario} />
+        <PrivateRoute path="/registroUsuario" component={RegistroUsuario} />
 
         <Route path="/registroEmpresa" component={RegistroEmpresa} />
 

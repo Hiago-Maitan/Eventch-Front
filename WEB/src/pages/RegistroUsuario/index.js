@@ -52,11 +52,11 @@ export default function RegistroUsuario() {
 
       const response = await register.post('#', data);
 
-      alert(`Cadastro feito !`);
+      alert('Cadastro realizado!');
 
-      history.push('/');
+      history.push('/login');
     } catch (err) {
-      alert('Erro no cadastro, tente novamente.');
+      alert('Não foi possível cadastrar, tente novamente.');
     }
   }
 
@@ -83,7 +83,7 @@ export default function RegistroUsuario() {
       <div className="bg-register">
 
         <Form onSubmit={handleRegister}>
-          
+
 
           <div className="form-container">
             <Row form>
@@ -121,7 +121,7 @@ export default function RegistroUsuario() {
               <Col md={3}>
                 <FormGroup>
 
-                <div className="input-label">Sobrenome: <span style={color}>*</span></div>
+                  <div className="input-label">Sobrenome: <span style={color}>*</span></div>
                   <Input
                     type="text"
                     name="surname"
@@ -138,7 +138,7 @@ export default function RegistroUsuario() {
               <Col md={1}></Col>
               <Col md={3}>
                 <FormGroup>
-                  <h5>Data de nascimento: <span style={color}>*</span></h5>
+                  <div className="input-label">Data de nascimento: <span style={color}>*</span></div>
                   <Input
                     type="date"
                     name="birthday"
@@ -153,7 +153,7 @@ export default function RegistroUsuario() {
               <Col md={3}>
                 <FormGroup>
 
-                  <h5>Gênero:</h5>
+                  <div className="input-label">Gênero: <span style={color}>*</span></div>
                   <Input type="select" name="select" id="exampleSelect">
 
                     <option
@@ -182,7 +182,7 @@ export default function RegistroUsuario() {
               <Col md={1}></Col>
               <Col md={3}>
                 <FormGroup>
-                  <h5>CPF: <span style={color}>*</span></h5>
+                  <div className="input-label">CPF: <span style={color}>*</span></div>
                   <Input
                     type="text"
                     name="cpf"
@@ -204,11 +204,13 @@ export default function RegistroUsuario() {
               <Col md={1}></Col>
               <Col md={3}>
                 <FormGroup>
-                  <h5>Celular: <span style={color}>*</span></h5>
+                  <div className="input-label">Celular: <span style={color}>*</span></div>
                   <Input
-                    type="number"
+                    type="text"
                     name="phone"
                     id="phone"
+                    maxLength="11"
+                    size="11"
                     placeholder="(00)90000-0000"
                     value={phone}
                     onChange={e => setPhone(e.target.value)}
@@ -218,18 +220,10 @@ export default function RegistroUsuario() {
               </Col>
             </Row>
 
-
-            <br></br>
-
-
             <Row form>
               <Col md={1}></Col>
-
-
               <Col md={7}>
-                <h4>2-Dados de conta</h4>
-                <br></br>
-
+                <div className="sub-title">2 - Dados da conta</div>
               </Col>
             </Row>
 
@@ -254,7 +248,7 @@ export default function RegistroUsuario() {
               <Col md={1}></Col>
               <Col md={3}>
                 <FormGroup>
-                  <h5>Senha: <span style={color}>*</span></h5>
+                  <div className="input-label">Senha: <span style={color}>*</span></div>
                   <Input
                     type="password"
                     name="password"
@@ -267,7 +261,7 @@ export default function RegistroUsuario() {
               <Col md={3}>
                 <FormGroup>
 
-                  <h5>Confime sua senha: <span style={color}>*</span></h5>
+                  <div className="input-label">Confirme sua senha: <span style={color}>*</span></div>
                   <Input
                     type="password"
                     name="confirmPassword"
@@ -288,11 +282,6 @@ export default function RegistroUsuario() {
                 </Col>
               </Row>
             </div>
-
-
-
-            <br></br>
-            <br></br>
           </div>
 
 
