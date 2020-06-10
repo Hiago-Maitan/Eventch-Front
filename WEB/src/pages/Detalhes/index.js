@@ -65,48 +65,13 @@ export default function Detalhes (props) {
 
 <br></br>
 
-<h2>Conte mais detalhes</h2>
-
-<br></br>
-<br></br>
-<br></br>
-
-<h4>1 - Qual categoria o seu evento se encaixa?</h4>
-<br></br>
-
-
-<FormGroup row>
-
-<Col sm={6}>
-<Input type="select" name="select" id="exampleSelect">
-<option>Curso</option>
-<option>WorkShops</option>
-<option>Palestra</option>
-<option>Outros</option>
-</Input>
-</Col>
-</FormGroup>
-
-<br></br>
-
-<h4>2 - Onde vai acontecer o evento?</h4>
+<h4>6 - Onde vai acontecer o evento?</h4>
 
 <br></br>
 
 <div>
 <Row form>
-<Col sm={3}>
-  <FormGroup>
-    <h5>Nome do local: <span style={color}>*</span></h5>
-      <Input type="text" 
-      name="address" 
-      id="exampleAddress"
-      />
-  </FormGroup>
-</Col>
-
-
-<Col sm={3}>
+<Col sm={2}>
   <FormGroup>
     <h5>CEP: <span style={color}>*</span></h5>
         <Input type="number" 
@@ -116,7 +81,17 @@ export default function Detalhes (props) {
   </FormGroup>      
 </Col>
 
-<Col sm={3}>
+<Col sm={5}>
+  <FormGroup>
+    <h5>Bairro: <span style={color}>*</span></h5>
+      <Input type="text" 
+      name="bairro" 
+      id="bairro"
+      />
+  </FormGroup>
+</Col>
+
+<Col sm={1}>
   <FormGroup>
     <h5>UF: <span style={color}>*</span></h5>
         <Input type="text" 
@@ -139,24 +114,14 @@ export default function Detalhes (props) {
   </FormGroup>
 </Col>
 
-<Col sm={3}>
+<Col sm={5}>
   <FormGroup>
-    <h5>Bairro: <span style={color}>*</span></h5>
+    <h5>Nome do local: <span style={color}>*</span></h5>
       <Input type="text" 
-      name="bairro" 
-      id="bairro"
+      name="address" 
+      id="exampleAddress"
       />
   </FormGroup>
-</Col>
-
-<Col sm={3}>
-  <FormGroup>
-    <h5>Complemento: <span style={color}>*</span></h5>
-        <Input type="text" 
-        name="complemento" 
-        id="complemento" 
-        />
-  </FormGroup>      
 </Col>
 
 <Col sm={2}>
@@ -168,11 +133,21 @@ export default function Detalhes (props) {
         />
   </FormGroup>      
 </Col>
+
+<Col sm={10}>
+  <FormGroup>
+    <h5>Complemento: <span style={color}>*</span></h5>
+        <Input type="text" 
+        name="complemento" 
+        id="complemento" 
+        />
+  </FormGroup>      
+</Col>
 </Row>
 
 <br></br>
 
-<h4>3 - Como vai ser o seu evento?</h4>
+<h4>7 - Como vai ser o seu evento?</h4>
 
 <br></br>
 

@@ -31,11 +31,9 @@ export default function PerfilEmpresa(){
             <div className="text-flex2">
               <img src={UserWhite}/>
               <div className="dados">
-              <h1>Name Surname</h1>
-              <h2>phone</h2>
-              <h2>email</h2>
-              <h2>birthday</h2>
-              <h2>sex</h2>
+              <h1>Hiago Maitan</h1>
+              <h2>Tel:(00)00000-0000</h2>
+              <h2>email:empresa@gmail.com</h2>
         </div>
         </div> 
 
@@ -43,9 +41,9 @@ export default function PerfilEmpresa(){
         <div className="text-flex2">
             <img src={Work}/>
             <div className="dados">
-            <h1>Fantasy Name</h1>
-            <h2>cnpj</h2>
-            <h2>about</h2>
+            <h1>Tivit</h1>
+            <h2>CNPJ: 00000000</h2>
+            <h2 className="about">TIVIT é uma multinacional brasileira de soluções digitais, com operação em 10 países da América Latina. Em 2016, foi considerada uma das 3 maiores prestadoras de serviços de tecnologia da informação do Brasil.</h2>
         </div>
         </div>
         </div>

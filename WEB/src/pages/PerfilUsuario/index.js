@@ -31,11 +31,10 @@ export default function PerfilUsuario() {
                 <div className="text-flex2">
                   <img src={UserWhite}/>
                   <div className="dados">
-                    <h1>Name Surname</h1>
-                    <h2>phone</h2>
-                    <h2>email</h2>
-                    <h2>birthday</h2>
-                    <h2>sex</h2>
+                    <h1>Hiago Maitan</h1>
+                    <h2>Tel: (00)00000-0000</h2>
+                    <h2>email: hiago@gmail.com</h2>
+                    
                   </div>   
                 </div>
 
@@ -44,6 +43,22 @@ export default function PerfilUsuario() {
             <div className="text-flex">
                 <h3>HISTÓRICO DE EVENTOS</h3>
                 <h3>MEUS INGRESSOS</h3>
+            </div>
+
+            <div className="container-historico">
+                <div className="hist1">
+                    <h5 className="nome-evento"><b>Técnicas de UX</b></h5>
+                    <h5 className="empresa">Stefaninni</h5>
+                    <h5 className="categoria">Palestra</h5>
+                </div>
+            </div>
+
+            <div className="container-historico">
+                <div className="hist1">
+                    <h5 className="nome-evento"><b>Técnicas de UX</b></h5>
+                    <h5 className="empresa">Stefaninni</h5>
+                    <h5 className="categoria">Palestra</h5>
+                </div>
             </div>
 
             <div className="container-historico">
