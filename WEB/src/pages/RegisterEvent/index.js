@@ -11,8 +11,11 @@ import ImageUploader from 'react-images-upload';
 import { FiUser, FiLogIn } from 'react-icons/fi'
 import {useHistory, Link} from 'react-router-dom';
 
+
   class Evento extends React.Component{
 
+
+     
     constructor(props) {
       super(props);
       this.state = {
@@ -207,6 +210,10 @@ import {useHistory, Link} from 'react-router-dom';
           <br></br>
           <br></br>
           <br></br>
+
+
+
+
 
   </div>
 
