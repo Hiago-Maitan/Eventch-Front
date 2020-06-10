@@ -44,9 +44,9 @@ export default function Routes() {
 
         <PrivateRoute path="/registerEvent" component={RegisterEvent} />
 
-        <Route path="/perfilUsuario" component={PerfilUsuario} />
+        <PrivateRoute path="/perfilUsuario" component={PerfilUsuario} />
 
-        <Route path="/perfilEmpresa" component={PerfilEmpresa} />
+        <PrivateRoute path="/perfilEmpresa" component={PerfilEmpresa} />
 
 
       </Switch>
