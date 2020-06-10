@@ -1,35 +1,33 @@
 import React,{useState,useEffect} from 'react';
-import userById from '../../services/userById';
 import './UserInfo.css'
 import userImage from './user.png'
 
 function UserInfo(){
-    const [isLogged,setLogged] = useState(true);
-    const [user,setUser] = useState({});
+    const [isLogged,setLogged] = useState(localStorage.getItem('isAuthenticated'));
 
     let content
     let img
-
-    useEffect(()=>{
-        try{
-
-        const response = userById.then(res => setUser(res.data));
     
-        } catch (err) {
-    
-            alert('não foi possivel');
-        }
-    },[]);
+    const handleLoggout = () => {
+        localStorage.removeItem('isAuthenticated');
+        localStorage.removeItem('expirationDate');
+        localStorage.removeItem('Username');
+    }
 
     if(isLogged){
-        img = <img src={user.Image}/>
-        content = <span className="title">{user.Name}</span>;
+        
+            img = <img src={userImage}/>
+            content = 
+            <div className="login-info">
+                <a href="/perfilUsuario" className="title">{localStorage.getItem('Username')}</a>
+                <a href="/login" className="login-sub-title" onClick={handleLoggout}>Sair</a>
+            </div>
     } else {
         img = <img src={userImage}/>
 
         content =  <div className="login-info">
-                        <a href="/" className="title">Login</a>
-                        <a href="/RegisterUser" className="login-sub-title">Não possui login?</a>
+                        <a href="/login" className="title">Login</a>
+                        <a href="/registroUsuario" className="login-sub-title">Não possui login?</a>
                     </div>
     }
 
