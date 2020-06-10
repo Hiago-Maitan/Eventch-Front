@@ -51,7 +51,7 @@ class Ingressos extends React.Component{
     }
 
   const color = {
-    color: '#1ABC9C'
+    color: 'red'
   };
 
     return (
@@ -181,7 +181,7 @@ class Ingressos extends React.Component{
 <Row form>
 <Col md={5}>
 <FormGroup>
-        <h5>Quantidade de ingressos:<span style={color}>*</span></h5>
+        <h5>Quantidade de ingressos:<span style={color}> *</span></h5>
         <Input
           type="number"
           name="numberIngressos"
@@ -193,7 +193,7 @@ class Ingressos extends React.Component{
       <Col md={5}>
 
       <FormGroup>
-        <h5>Quantidade por pessoa: <span style={color}>*</span></h5>
+        <h5>Quantidade por pessoa:</h5>
         <Input
           type="number"
           name="numberPessoa"

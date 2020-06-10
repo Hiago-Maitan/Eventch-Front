@@ -32,6 +32,13 @@
     margin-top: 5px;
 }
 
+.color-container .company .about{
+    width: 52%;
+    font-size: 95%;
+    height: 10%;
+
+}
+
 .color-container img {
     height: 80px;
     width: 80px;
@@ -67,6 +74,11 @@
     margin-left: 10px;
 }
 
+.color-container .text-flex2 .dados {
+    margin-left: 0px;
+    margin-top: -110px;
+}
+
 .container-totalEvento h3 {
     color: white;
     font-size: 30px;
@@ -84,25 +96,6 @@
     margin-top: 0px;
 }
 
-
-/* .container-historico .hist1 {
-    display: flex;
-    margin-left: 200px;
-    font-size: 20px;
+.line .color-container .company {
+    margin-top: 0px;
 }
-
-.container-historico .hist1 .nome-evento {
-    color: rgb(33, 138, 117);
-    font-size: 18px;
-    margin-left: -200px;
-}
-
-.container-historico .hist1 .empresa {
-    margin-left: 70px;
-    font-size: 18px;
-}
-
-.container-historico .hist1 h5+h5 {
-    margin-left: 160px;
-    font-size: 18px;
-} */
