@@ -8,7 +8,7 @@ import Modal from 'react-bootstrap/Modal';
 import { FiUser, FiLogIn } from 'react-icons/fi'
 import {useHistory, Link} from 'react-router-dom';
 
-export default ModalLogin(){
+export default function ModalLogin(){
 
   return (
 
@@ -29,7 +29,7 @@ export default ModalLogin(){
       </Modal>
     </>
 
-    ):
+    );
 } 
 
 

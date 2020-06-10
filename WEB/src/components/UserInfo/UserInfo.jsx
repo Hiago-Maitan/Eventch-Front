@@ -4,7 +4,11 @@ import './UserInfo.css'
 import userImage from './user.png'
 
 function UserInfo(){
+<<<<<<< HEAD
     const [isLogged,setLogged] = useState(true);
+=======
+    const [isLogged,setLogged] = useState(false);
+>>>>>>> 8584a3bb7247c6b6a96b76fc395d32f89fafdd4b
     const [user,setUser] = useState({});
 
     let content
@@ -28,7 +32,11 @@ function UserInfo(){
         img = <img src={userImage}/>
 
         content =  <div className="login-info">
+<<<<<<< HEAD
                         <a href="/" className="title">Login</a>
+=======
+                        <a href="/login" className="title">Login</a>
+>>>>>>> 8584a3bb7247c6b6a96b76fc395d32f89fafdd4b
                         <a href="/RegisterUser" className="login-sub-title">Não possui login?</a>
                     </div>
     }

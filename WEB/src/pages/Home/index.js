@@ -18,6 +18,7 @@ import { MDBJumbotron, MDBBtn, MDBContainer, MDBRow, MDBCol, MDBCardTitle, MDBIc
 import Toolbar from '../../components/Toolbar/Toolbar'
 import SideDrawer from '../../components/SideDrawer/SideDrawer';
 import Backdrop from '../../components/Backdrop/Backdrop'
+<<<<<<< HEAD
 
 
 import "bootstrap/dist/css/bootstrap.css";
@@ -27,6 +28,8 @@ import "slick-carousel/slick/slick-theme.css";
 
 
 
+=======
+>>>>>>> 8584a3bb7247c6b6a96b76fc395d32f89fafdd4b
 
 function groupIntoThrees (children) {
 
@@ -109,6 +112,7 @@ export default function Home(){
   const handleShow = () => setShow(true);
 
   //Responsividade da Toolbar
+<<<<<<< HEAD
 
   const [sideDrawerOpen, setOpen] = useState(false);
 
@@ -189,13 +193,29 @@ fetch('https://jsonplaceholder.typicode.com/users').then(res=>res.json()).then(d
 <div>
 <h1 className="lado">Eventos em destaque</h1>
 <br></br>
+=======
 
+  const [sideDrawerOpen, setOpen] = useState(false);
+
+  const handleSideClose = () => setOpen(false);
+  const handleSideOpen = () => setOpen(true);
+
+  let backdrop;
+
+  if (sideDrawerOpen) {
+    backdrop = <Backdrop click={handleSideClose} />
+  }
+>>>>>>> 8584a3bb7247c6b6a96b76fc395d32f89fafdd4b
+
+    return (
+<div> 
 
 
 </div>
 
 
 
+<<<<<<< HEAD
 
 <br></br>
 
@@ -237,6 +257,19 @@ fetch('https://jsonplaceholder.typicode.com/users').then(res=>res.json()).then(d
 <div>
 <h1 className="lado">Eventos do seu interesse </h1>
 <br></br>
+=======
+
+    <Toolbar handleSideOpen={handleSideOpen}/>
+    <SideDrawer show={sideDrawerOpen}/>
+    {backdrop}
+
+ <>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title style={color}>Faça seu Login</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+>>>>>>> 8584a3bb7247c6b6a96b76fc395d32f89fafdd4b
 
 
 
