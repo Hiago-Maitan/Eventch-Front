@@ -98,40 +98,7 @@ export default function Home(){
     <Toolbar handleSideOpen={handleSideOpen}/>
     <SideDrawer show={sideDrawerOpen}/>
     {backdrop}
-    
-    {/* 
-<div className="navbar">
-              <Link className="logo" to="/"></Link>
 
-                <div className="dropdown dropOne">
-                 <button className="dropbtn">Eventos </button>
-
-                   <div className="dropdown-content">
-                      <a href="#">Publicar Evento</a>
-                      <a href="#">Em Destaque</a>
-                    </div>
-                </div>
-
-                <div className="dropdown dropTwo">
-                    <button className="dropbtn">Sobre Nós </button>
-
-                    <div className="dropdown-content">
-                      <a href="#">Projeto</a>
-                      <a href="#">Quem Somos</a>
-                    </div>
-                </div>
-                        
-                    <div className="dropdown dropOne">
-
-                     <Link className="user" onClick={handleShow}>
-                        <FiUser size={40} color="#1ABC9C" />
-                           Login
-                      </Link>
-
-                      
-                    </div>
-            </div>
-            */}
  <>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
