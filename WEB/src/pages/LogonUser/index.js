@@ -10,7 +10,7 @@ import './styles.css';
 import Toolbar from '../../components/Toolbar/Toolbar';
 import SideDrawer from '../../components/SideDrawer/SideDrawer';
 import Backdrop from '../../components/Backdrop/Backdrop';
-import login from '../../services/login';
+import {login} from '../../services/user';
 
 
 export default function Logon() {
