@@ -18,7 +18,6 @@ import { MDBJumbotron, MDBBtn, MDBContainer, MDBRow, MDBCol, MDBCardTitle, MDBIc
 import Toolbar from '../../components/Toolbar/Toolbar'
 import SideDrawer from '../../components/SideDrawer/SideDrawer';
 import Backdrop from '../../components/Backdrop/Backdrop'
-<<<<<<< HEAD
 
 
 import "bootstrap/dist/css/bootstrap.css";
@@ -28,8 +27,6 @@ import "slick-carousel/slick/slick-theme.css";
 
 
 
-=======
->>>>>>> 8584a3bb7247c6b6a96b76fc395d32f89fafdd4b
 
 function groupIntoThrees (children) {
 
@@ -112,7 +109,6 @@ export default function Home(){
   const handleShow = () => setShow(true);
 
   //Responsividade da Toolbar
-<<<<<<< HEAD
 
   const [sideDrawerOpen, setOpen] = useState(false);
 
@@ -170,9 +166,9 @@ fetch('https://jsonplaceholder.typicode.com/users').then(res=>res.json()).then(d
 <div> 
 
     <div style={styles}>
-    <Parallax     bgImage={require('../../Image/seminar.jpg')} strength={300} >
+    <Parallax     bgImage={require('../../Image/conference.jpg')} strength={300} >
 
-<h1 className="blocktext" height={0}>Não procure por eventos, a eventech fará isso por você.</h1>
+<h1 className="blocktexth1" height={0}>Não procure por eventos, a eventech fará isso por você.</h1>
      <br></br>
       <div style={{ height: 100 }}>
       </div>
@@ -193,35 +189,19 @@ fetch('https://jsonplaceholder.typicode.com/users').then(res=>res.json()).then(d
 <div>
 <h1 className="lado">Eventos em destaque</h1>
 <br></br>
-=======
 
-  const [sideDrawerOpen, setOpen] = useState(false);
-
-  const handleSideClose = () => setOpen(false);
-  const handleSideOpen = () => setOpen(true);
-
-  let backdrop;
-
-  if (sideDrawerOpen) {
-    backdrop = <Backdrop click={handleSideClose} />
-  }
->>>>>>> 8584a3bb7247c6b6a96b76fc395d32f89fafdd4b
-
-    return (
-<div> 
 
 
 </div>
 
 
 
-<<<<<<< HEAD
 
 <br></br>
 
 
 
-
+<div className="teste" >
 <div className="container"    >
             {suggestions.length===0?(
                 <div className="spinner-border" role="status">
@@ -236,7 +216,7 @@ fetch('https://jsonplaceholder.typicode.com/users').then(res=>res.json()).then(d
                                 <img className="rounded" alt={"users here"} src={`https://source.unsplash.com/random/${current.id}`} id="half-size-carousel" />
                                 <div className="card-body">
                                     <h5 className="card-title">{current.username}</h5>
-                                    <small className="card-text text-sm-center text-muted">In your contacts</small>
+                                    <small className="card-text text-sm-center text-muted">Evento disponível</small>
                                     <br/>{/* 
                                     <button className="btn btn-sm follow btn-primary">Entrar</button>
 
@@ -249,131 +229,59 @@ fetch('https://jsonplaceholder.typicode.com/users').then(res=>res.json()).then(d
                 </Slider>
             )}
         </div>
-
-<br></br>
-<br></br>
-<br></br>
-
-<div>
-<h1 className="lado">Eventos do seu interesse </h1>
-<br></br>
-=======
-
-    <Toolbar handleSideOpen={handleSideOpen}/>
-    <SideDrawer show={sideDrawerOpen}/>
-    {backdrop}
-
- <>
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title style={color}>Faça seu Login</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
->>>>>>> 8584a3bb7247c6b6a96b76fc395d32f89fafdd4b
-
-
-
-<br></br>
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
-
-
-
-
-
-<div className="container" >
-            <h6 className="text-muted">carosel</h6>
-            {suggestions.length===0?(
-                <div className="spinner-border" role="status">
-                    <span className="sr-only">Loading...</span>
-                </div>
-            ):(
-                <Slider {...settings}>
-                {suggestions.map(current=>(
-                        <div className="out" key={current.id}>
-                          <br></br>
-                            <div className="card">
-                                <img className="rounded" alt={"users here"} src={`https://source.unsplash.com/random/${current.id}`} id="half-size-carousel" />
-                                <div className="card-body">
-                                    <h5 className="card-title">{current.username}</h5>
-                                    <small className="card-text text-sm-center text-muted">In your contacts</small>
-                                    <br/>{/* 
-                                    <button className="btn btn-sm follow btn-primary">Entrar</button>
-
-                                    */}
-                                </div>
-                            </div>
-                            
-                        </div>
-                    ))}
-                </Slider>
-            )}
-        </div>
-
-<br></br>
-<br></br>
 <br></br>
 
 
 
-
-<div className="container"> 
-<h1>teste</h1>
+<div className="cabecalho"> 
+<h1 className="ladoT">Proposta Eventech  </h1>
 
 
    
   <br></br>
-  <h3>Como se conta uma boa história? Essa é provavelmente
-     uma pergunta ampla demais para uma resposta simples.
-      Mas uma coisa é certa: uma narrativa bem estruturada 
-      é um ótimo caminho a seguir.</h3>
+  <h3 className="lado">A Eventech é um portal de eventos, 
+  visando conectar eventos á pessoas de uma forma rápida e 
+  objetiva, para isso desenvolvemos um portal para cadastro 
+  de eventos, pessoas jurídica e física, divulgação de eventos, 
+  venda e reserva de ingressos, analytics para melhor controle dos eventos.</h3>
       <br></br>
 
 <div id="gray"> 
- <h3>
-O gênero da narrativa é bem complexo. Além de ter vários elementos,
- segue uma estrutura específica e precisa ser bem planejado para funcionar
-  do jeito certo.</h3></div>
+ <h3 className="lado">
+ Envio de e-mail interativo para eventos de interesse do usuário e suas 
+ reservas de ingressos.</h3></div>
 
 
     
-<div id="red">
-<Parallax  bgImage={require('../../Image/dashboard.jpg')} strength={100} >
+<div>
+<Parallax  bgImage={require('../../Image/email.jpg')} strength={50} >
 
 <br></br>
- <div style={{ height: 200 }}>
+ <div style={{ height: 230 }}>
  </div>
 </Parallax>    
     </div>
   <br></br>
 <div>
-<h2>Algumas das maiores histórias já contadas, principalmente nas obras de ficção, se valeram desse incrível método. E quem disse que ele não pode ser
-  explorado também na sua produção de conteúdo para a web?</h2>
+<h3 className="lado">
+Com um mercado tão variado, os consumidores que têm interesse 
+em um determinado tipo de evento não possuem uma noção ampla
+ de quantos eventos estão acontecendo e quais as suas localidades.
+<br></br>
+Com o acirramento da concorrência e o aumento da
+ facilidade do cliente em ter acesso à informação, as
+  empresas precisam encontrar formas baratas e práticas 
+  de chamar a atenção do seu público alvo.
 
+  </h3>
 
 </div>
 
 
-  <br></br>
-  <h2>
-Quer saber tudo que há para explorar sobre essa forma de contar histórias
- e enriquecer seu storytelling? Então vamos lá!
-  </h2>
 
 
-  </div>
+ </div>
 
   
 
@@ -385,8 +293,7 @@ Quer saber tudo que há para explorar sobre essa forma de contar histórias
 </div>
 
 <div className="teste">
-
-
+{/* 
 <MDBContainer>
       <MDBRow>
         <MDBCol>
@@ -398,7 +305,7 @@ Quer saber tudo que há para explorar sobre essa forma de contar histórias
 
                   Melhor gerenciamento da sua venda de ingressos...
                  </h3>
-                 <Button color="secondary" size="lg">Large Button</Button>
+                 <Button color="secondary" size="lg">Verificar</Button>
 
                  
               </MDBCol>
@@ -407,6 +314,44 @@ Quer saber tudo que há para explorar sobre essa forma de contar histórias
         </MDBCol>
       </MDBRow>
     </MDBContainer>
+
+*/}
+
+<h1 className="ladoT1">Proposta Eventech  </h1>
+
+
+
+<div id="gray1">
+<Parallax  bgImage={require('../../Image/analytics1.png')} strength={50} >
+
+<br></br>
+ <div style={{ height: 221 }}>
+ </div>
+</Parallax>  
+
+
+<br></br>
+<br></br>
+<br></br>
+    </div>
+
+
+<div id="red"> 
+ <h3 className="lado1">
+ Painéis que mostram métricas e indicadores importantes 
+ para alcançar objetivos e metas traçadas 
+ de forma visual, facilitando a compreensão das
+ informações geradas dos eventos.
+  </h3>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+
+</div>
+
 
 
 
