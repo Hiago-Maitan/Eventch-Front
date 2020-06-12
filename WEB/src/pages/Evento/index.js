@@ -10,6 +10,12 @@ import Toolbar from '../../components/Toolbar/Toolbar'
 import SideDrawer from '../../components/SideDrawer/SideDrawer'
 import Backdrop from '../../components/Backdrop/Backdrop'
 
+//company img
+import companyLogo from './img/user_white.png'
+import image1 from './img/image1.jpg'
+import image2 from './img/image2.jpg'
+import image3 from './img/image3.jpg'
+
 import './styles.css';
 
 import {
@@ -41,7 +47,35 @@ const items = [
 
 const Evento = (props) => {
 
-  const [eventInfo, setEvent] = useState({});
+  const [eventInfo, setEvent] = useState({
+    Id: 0,
+    Name: "",
+    InitialDate: "",
+    FinalDate: "",
+    PlaceId: {
+      Id: 0,
+      Name: "",
+      Description: "",
+      Capacity: 0,
+      City: "",
+      State: "",
+      ZipCode: "",
+      Street: "",
+      StreetNumber: 0
+    },
+    CreatedBy: {
+      Id: 0,
+      Name: "",
+      About: "",
+      Phone: "",
+      SocialReason: "",
+      FantasyName: ""
+    },
+    Description: "",
+    AgeRange: "",
+    Category: ""
+  });
+
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
 
@@ -49,16 +83,20 @@ const Evento = (props) => {
 
   let eventId = props.match.params.id;
 
-  useEffect(() => {
+  async function handleEvent(){
     if (eventId > 0) {
       try {
-        const response = event({ eventId }).then(res => setEvent(res.data));
+        const response = await event({ eventId }).then(res => {setEvent(res.data)});
       } catch (err) {
         history.push('/')
       }
     } else {
       history.push('/')
     }
+  }
+
+  useEffect(() => {
+    handleEvent();
   }, []);
 
   const next = () => {
@@ -110,8 +148,60 @@ const Evento = (props) => {
       <SideDrawer show={sideDrawerOpen} />
       {backdrop}
 
-      <div className="evento-container">
-        <div className="content">
+      <div className="event-container">
+        <div className="event-info">
+          <h1>{eventInfo.Name}</h1>
+
+          <div className="event-sub-title">
+            <div>
+              <FiNavigation2 className="" size={20} color="#1ABC9C" />{eventInfo.PlaceId.Street}, {eventInfo.PlaceId.StreetNumber} - {eventInfo.PlaceId.City} - {eventInfo.PlaceId.State}
+            </div>
+            <div>
+              <FiCalendar className="" size={20} color="#1ABC9C" />
+              {eventInfo.InitialDate} - {eventInfo.FinalDate}
+            </div>
+          </div>
+          <p>{eventInfo.Description}</p>
+        </div>
+        <div className="company-info">
+          <div className="company-content">
+            <img src={companyLogo} />
+            <h1>{eventInfo.CreatedBy.Name}</h1>
+            <p>{eventInfo.CreatedBy.About}</p>
+          </div>
+        </div>
+      </div>
+      <div className="carousel">
+
+        <style>
+          {
+            `.custom-tag {
+                  max-width: 100%;
+                  height: 500px;
+                  background: black;
+                }`
+          }
+        </style>
+
+        <Carousel
+          activeIndex={activeIndex}
+          next={next}
+          previous={previous}
+        >
+          <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={goToIndex} />
+          {slides}
+          <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
+          <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
+        </Carousel>
+      </div>
+      <div className="btn-container">
+
+        <div className="btn-reserve">
+          <button type="button">Reservar Ingresso</button>
+        </div>
+
+      </div>
+      {/*<div className="content">
 
           <div className="one">
             <section>
@@ -127,10 +217,9 @@ const Evento = (props) => {
           <div className="container-logo">
             <div className="logo-evento">
 
-              <h1>-----</h1>
-              <h2>Nimbi</h2>
+              <h2>{eventInfo.CreatedBy.Name}</h2>
 
-              <p>Java é o ambiente computacional, ou plataforma, criada pela empresa estadunidense Sun Microsystems, e vendida para a Oracle depois de alguns anos. A plataforma permite desenvolver programas utilizando a linguagem de programação Java.</p>
+              <p>{eventInfo.CreatedBy.About}</p>
             </div>
           </div>
 
@@ -169,7 +258,7 @@ const Evento = (props) => {
 
 
         </div>
-      </div>
+            */}
     </>
   );
 }

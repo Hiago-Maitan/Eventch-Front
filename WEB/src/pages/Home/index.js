@@ -154,7 +154,7 @@ export default function Home(){
 
     <Table.Body>
       <Table.Row>
-        <Table.Cell><a href="/evento">Java</a></Table.Cell>
+        <Table.Cell><a href="/evento/13">Java</a></Table.Cell>
         <Table.Cell>Easynvest</Table.Cell>
         <Table.Cell>
         Workshop
