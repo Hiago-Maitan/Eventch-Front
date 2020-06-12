@@ -22,7 +22,7 @@ import PerfilEmpresa from './pages/PerfilEmpresa';
 
 export default function Routes() {
 
-
+  let id =4;
 
   return (
     <BrowserRouter>
@@ -30,11 +30,11 @@ export default function Routes() {
 
         <Route path="/" exact component={Home} />
 
-        <Route path="/evento" component={Evento} />
+        <Route path="/evento/:id" component={Evento} />
 
         <Route path="/login" component={LogonUser} />
 
-        <PrivateRoute path="/registroUsuario" component={RegistroUsuario} />
+        <Route path="/registroUsuario" component={RegistroUsuario} />
 
         <Route path="/registroEmpresa" component={RegistroEmpresa} />
 

@@ -47,8 +47,9 @@ const Evento = (props) => {
 
   const history = useHistory();
 
+  let eventId = props.match.params.id;
+
   useEffect(() => {
-    let eventId = 4;
     if (eventId > 0) {
       try {
         const response = event({ eventId }).then(res => setEvent(res.data));
@@ -116,9 +117,9 @@ const Evento = (props) => {
             <section>
               <h1>{eventInfo.Name}</h1>
   <h2> <FiNavigation2 className="" size={20} color="#1ABC9C" />{}</h2>
-              <h2> <FiCalendar className="" size={20} color="#1ABC9C" /> 25/12/2020 - 01/01/2021 </h2>
+              <h2> <FiCalendar className="" size={20} color="#1ABC9C" /> {eventInfo.InitialDate} - {eventInfo.FinalDate} </h2>
 
-              <p>Java é o ambiente computacional, ou plataforma, criada pela empresa estadunidense Sun Microsystems, e vendida para a Oracle depois de alguns anos. A plataforma permite desenvolver programas utilizando a linguagem de programação Java.</p>
+              <p>{eventInfo.Description}</p>
 
             </section>
           </div>
