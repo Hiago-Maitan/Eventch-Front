@@ -7,6 +7,7 @@ import {useHistory, Link} from 'react-router-dom';
 
 
 export default function Detalhes (props) {
+  
    const color = {
     color: 'red'
   };
@@ -59,11 +60,10 @@ export default function Detalhes (props) {
 <Row form>
 <Col md={2}></Col>
 
-
 <Col md={9}>
 <FormGroup>
 
-<br></br>
+<h2 className="form-header">Faça seu cadastro</h2>
 
 <h4>6 - Onde vai acontecer o evento?</h4>
 
@@ -76,7 +76,7 @@ export default function Detalhes (props) {
     <h5>CEP: <span style={color}>*</span></h5>
         <Input type="number" 
         name="cep" 
-        id="cep" 
+        id="cep"
         />
   </FormGroup>      
 </Col>
