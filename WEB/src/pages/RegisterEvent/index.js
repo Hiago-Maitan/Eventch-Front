@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 //import logo from './logo.svg';
 //import ImageUploader from 'react-images-upload';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormText, Select } from 'reactstrap';
 import { Col, Row,} from 'reactstrap';
 import './styles.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -24,7 +24,14 @@ import regCategoriaAPI from '../../services/regCategoriaAPI';
   const [categoryId, setCategoryId] = useState('');
   const [description, setDescription] = useState('');
 
-  const [nameCategory, setNameCategory] = useState('');
+  const [categoryName, setCategoryName] = useState('Curso');
+
+  const category = [
+    {value: 'Curso', name: 'Curso'},
+    {value: 'Workshop', name: 'Workshop'},
+    {value: 'Palestra', name: 'Palestra'},
+    {value: 'Outros', name: 'Outros'},
+  ];
 
   const history = useHistory();
 
@@ -41,13 +48,13 @@ import regCategoriaAPI from '../../services/regCategoriaAPI';
       description,
     };
 
-    const category = {
-      nameCategory,
+      const data2= {
+      categoryName
     };
 
     try{
       const response = await regEventoAPI.post('EventJPA', data);
-      const response2 = await regCategoriaAPI.post('CategoryJPA', category);
+      const response2 = await regCategoriaAPI.post('CategoryJPA', data2);
       
       alert(`Evento Cadastrado !`);
 
@@ -187,6 +194,8 @@ import regCategoriaAPI from '../../services/regCategoriaAPI';
           name="horaInicio"
           id="exampleTime"
           placeholder="time placeholder"
+          value={initialHour}
+          onChange={e => setInitialHour(e.target.value)}
           />  
       </FormGroup>
 </Col>
@@ -199,6 +208,8 @@ import regCategoriaAPI from '../../services/regCategoriaAPI';
           name="horaTermino"
           id="exTime"
           placeholder="time placeholder"
+          value={finalHour}
+          onChange={e => setFinalHour(e.target.value)}
           />
       </FormGroup> </Col>
 </Row>
@@ -218,25 +229,14 @@ import regCategoriaAPI from '../../services/regCategoriaAPI';
   <FormGroup row>
 
 <Col sm={6}>
-<Input type="select" name="select" id="exampleSelect" onChange={e => setCategoryId(e.target.value)}
-required>
 
-<option
-value={categoryId}
->Curso</option>
+<Input type="select" name="select" id="exampleSelect" value={categoryName} onChange={e => setCategoryName(e.target.value)}>
+         {category.map((item, index) => (
+          <option value={item.value}>{item.name}</option>
+        ))}  
+        </Input>
 
-<option
-value={categoryId}
->WorkShops</option>
 
-<option
-value={categoryId}
->Palestra</option>
-
-<option
-value={categoryId}
->Outros</option>
-</Input>
 </Col>
 </FormGroup>
 
