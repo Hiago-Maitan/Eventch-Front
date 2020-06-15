@@ -1,21 +1,45 @@
-.container{
-    margin:0;
-    /*background-color: #a7ffeb;*/
-    /*background-color: #1ABC9C;*/
-    background-color: white;
-    padding: 12px;
-    /*border-radius: 8px;*/
-    margin-left: 100px;
-    margin-right: 50px;
-    margin-bottom: 20px;
-    /*border: 1px solid black;*/
-    box-shadow: rgba(0, 0, 0, 0.50) 1px 1px 4px 4px;
+@import '../../colors.css';
+
+.bg-register{
+    background-color: var(--bg-register);
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Open Sans',sans-serif;
 }
 
-.form-control{
-border: 1px solid black;
+.form-container{
+    background: #FFFFFF;
+    border: 1px solid #AAAAAA;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin: 130px 66px 0px 66px;
 }
 
-body{
-	background: #f5f5f5;
+.form-header{
+    
+    height: 139px;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 36px;
+    line-height: 43px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--third-color);
+    margin-left: 5.6rem;
+}
+
+.sub-title{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    color: var(--secondary-color);
+    margin-bottom: 40px;
+}
+
+.input-label{
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 22px;
 }

@@ -197,8 +197,8 @@ fetch('https://jsonplaceholder.typicode.com/users').then(res=>res.json()).then(d
 
 
 
-<br></br>
-
+<br></br>{///carousel multiple items react 
+}
 
 
 <div className="teste" >
@@ -277,11 +277,9 @@ Com o acirramento da concorrência e o aumento da
   </h3>
 
 </div>
-
-
-
-
  </div>
+
+
 
   
 

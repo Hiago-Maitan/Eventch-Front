@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useHistory, Link} from 'react-router-dom';
 
 import { FiCalendar, FiNavigation2, FiUser, FiMapping } from 'react-icons/fi';
 
-import api from '../../services/api';
+import event from '../../services/event';
 
 import './styles.css';
 
@@ -35,8 +35,14 @@ const items = [
 ];
 
 const Evento = (props) => {
+  //const [event, setEvent] = useState({});
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
+
+  /*useEffect(()=>{
+    const response = event({id}).then(res => setEvent(res.data));
+    console.log(event);
+  },[event]);*/
 
   const next = () => {
     if (animating) return;

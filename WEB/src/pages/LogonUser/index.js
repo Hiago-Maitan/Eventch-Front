@@ -10,6 +10,7 @@ import './styles.css';
 import Toolbar from '../../components/Toolbar/Toolbar';
 import SideDrawer from '../../components/SideDrawer/SideDrawer';
 import Backdrop from '../../components/Backdrop/Backdrop';
+import login from '../../services/login';
 
 
 export default function Logon() {
@@ -23,7 +24,19 @@ export default function Logon() {
     e.preventDefault();
 
     try {
-      const response = await api.post('#', email, password);
+      let expiration_date;
+      let is_authenticated;
+      let username;
+
+      const response = await login({email,password}).then( res => {
+        expiration_date = res.data.expiration_date;
+        is_authenticated = res.data.is_authenticated;
+        username = res.data.username;
+      });
+
+      localStorage.setItem('isAuthenticated',is_authenticated);
+      localStorage.setItem('expirationDate',expiration_date);
+      localStorage.setItem('Username',username);
 
       history.push('/');
       

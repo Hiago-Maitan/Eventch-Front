@@ -11,11 +11,8 @@ import ImageUploader from 'react-images-upload';
 import { FiUser, FiLogIn } from 'react-icons/fi'
 import {useHistory, Link} from 'react-router-dom';
 
-
   class Evento extends React.Component{
 
-
-     
     constructor(props) {
       super(props);
       this.state = {
@@ -119,21 +116,19 @@ import {useHistory, Link} from 'react-router-dom';
      </Col>
 </Row>
 
-
-
          <Row form>
            <Col md={1}></Col>
            
 
 <Col md={7}>
         <FormGroup>
-          <h4>1-Qual o nome do seu evento?</h4>
+          <h4>1 - Qual o nome do seu evento?</h4>
           <br></br>
           <h5>Nome do evento:</h5>
           <Input type="nome" name="evento" id="nomeEvento" placeholder="" />
           <br></br> 
 
-          <h4>2-Quando é o evento?</h4>
+          <h4>2 - Quando é o evento?</h4>
 
         </FormGroup>
      </Col>
@@ -197,8 +192,24 @@ import {useHistory, Link} from 'react-router-dom';
          
       <div>
         <br></br>
-       
-            <h4>3-Adicione uma imagem</h4>
+       <h4>3 - Qual categoria o seu evento se encaixa?</h4>
+<br></br>
+
+  <FormGroup row>
+
+<Col sm={6}>
+<Input type="select" name="select" id="exampleSelect">
+<option>Curso</option>
+<option>WorkShops</option>
+<option>Palestra</option>
+<option>Outros</option>
+</Input>
+</Col>
+</FormGroup>
+
+<br></br>
+
+            <h4>4 - Adicione uma imagem</h4>
                <br></br>
             
 
@@ -209,16 +220,11 @@ import {useHistory, Link} from 'react-router-dom';
           {$imagePreview}</Col> 
           <br></br>
           <br></br>
-          <br></br>
-
-
-
-
-
+          
   </div>
 
            <h4>
-              4-Sua descrição do evento:
+              5 - Sua descrição do evento:
             </h4>
             <br></br>
   <FormGroup>
