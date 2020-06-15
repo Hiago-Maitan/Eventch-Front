@@ -12,7 +12,6 @@
     background: #FFFFFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-top: var(--primary-color) solid 13.04px;
-    z-index: 1000;
 }
 
 .bg-logo{
