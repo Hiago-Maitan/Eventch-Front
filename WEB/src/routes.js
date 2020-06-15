@@ -19,7 +19,6 @@ import LogonUser from './pages/LogonUser';
 import PerfilUsuario from './pages/PerfilUsuario';
 import PerfilEmpresa from './pages/PerfilEmpresa';
 
-
 export default function Routes() {
 
   let id =4;
@@ -47,7 +46,6 @@ export default function Routes() {
         <PrivateRoute path="/perfilUsuario" component={PerfilUsuario} />
 
         <PrivateRoute path="/perfilEmpresa" component={PerfilEmpresa} />
-
 
       </Switch>
     </BrowserRouter>

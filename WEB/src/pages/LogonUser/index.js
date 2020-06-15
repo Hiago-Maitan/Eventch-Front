@@ -65,11 +65,13 @@ export default function Logon() {
       <Toolbar handleSideOpen={handleSideOpen} />
       <SideDrawer show={sideDrawerOpen} />
       {backdrop}
+       
 
       <div className="login-container">
-        <h1>Entre com sua conta</h1>
-
+       <div className="colorContainer">
         <form onSubmit={handleLogin}>
+
+        <h1>Entre com sua conta</h1>
 
           <input type="email"
             placeholder="E-mail"
@@ -87,14 +89,15 @@ export default function Logon() {
           <button className="button" type="submit">Entrar</button>
 
           <Link className="back-link" to="/registroUsuario">
-            <FiLogIn size={16} color="#1ABC9C" />
+            <FiLogIn size={16} color="#ffff" />
                          Cadastro PF
                     </Link>
           <Link className="back-link" to="/registroEmpresa">
-            <FiLogIn size={16} color="#1ABC9C" />
+            <FiLogIn size={16} color="#ffff" />
                          Cadastro PJ
                     </Link>
         </form>
+        </div>
       </div>
     </>
   )

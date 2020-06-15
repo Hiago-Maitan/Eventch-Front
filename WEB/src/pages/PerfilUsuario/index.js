@@ -77,6 +77,46 @@ export default function PerfilUsuario() {
                 </div>
             </div>
 
+             <div className="container-historico">
+                <div className="hist1">
+                    <h5 className="nome-evento"><b>Técnicas de UX</b></h5>
+                    <h5 className="empresa">Stefaninni</h5>
+                    <h5 className="categoria">Palestra</h5>
+                </div>
+            </div> 
+
+            <div className="container-historico">
+                <div className="hist1">
+                    <h5 className="nome-evento"><b>Técnicas de UX</b></h5>
+                    <h5 className="empresa">Stefaninni</h5>
+                    <h5 className="categoria">Palestra</h5>
+                </div>
+            </div>
+
+             <div className="container-historico">
+                <div className="hist1">
+                    <h5 className="nome-evento"><b>Técnicas de UX</b></h5>
+                    <h5 className="empresa">Stefaninni</h5>
+                    <h5 className="categoria">Palestra</h5>
+                </div>
+            </div>
+
+             <div className="container-historico">
+                <div className="hist1">
+                    <h5 className="nome-evento"><b>Técnicas de UX</b></h5>
+                    <h5 className="empresa">Stefaninni</h5>
+                    <h5 className="categoria">Palestra</h5>
+                </div>
+            </div>
+
+             <div className="container-historico">
+                <div className="hist1">
+                    <h5 className="nome-evento"><b>Técnicas de UX</b></h5>
+                    <h5 className="empresa">Stefaninni</h5>
+                    <h5 className="categoria">Palestra</h5>
+                </div>
+            </div>
+
         </div>
         </div>
 

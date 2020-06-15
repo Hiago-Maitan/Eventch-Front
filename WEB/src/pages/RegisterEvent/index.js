@@ -1,55 +1,68 @@
-import React from 'react';
+import React, {useState} from 'react';
 //import logo from './logo.svg';
 //import ImageUploader from 'react-images-upload';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormText, Select } from 'reactstrap';
 import { Col, Row,} from 'reactstrap';
 import './styles.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Dropdown from 'react-bootstrap/Dropdown'
-import ImageUploader from 'react-images-upload';
+// import ImageUploader from 'react-images-upload';
 
 import { FiUser, FiLogIn } from 'react-icons/fi'
 import {useHistory, Link} from 'react-router-dom';
 
-  class Evento extends React.Component{
+import regEventoAPI from '../../services/regEventoAPI';
+import regCategoriaAPI from '../../services/regCategoriaAPI';
 
-    constructor(props) {
-      super(props);
-      this.state = {
-        file: '',
-        imagePreviewUrl: ''
-      };
-      this._handleImageChange = this._handleImageChange.bind(this);
-      this._handleSubmit = this._handleSubmit.bind(this);
+  function RegistrarEvento(){
+
+  const [name, setName] = useState('');
+  const [initialDate, setInitialDate] = useState('');
+  const [finalDate, setFinalDate] = useState('');
+  const [initialHour, setInitialHour] = useState('');
+  const [finalHour, setFinalHour] = useState('');
+  const [categoryId, setCategoryId] = useState('');
+  const [description, setDescription] = useState('');
+
+  const [categoryName, setCategoryName] = useState('Curso');
+
+  const category = [
+    {value: 'Curso', name: 'Curso'},
+    {value: 'Workshop', name: 'Workshop'},
+    {value: 'Palestra', name: 'Palestra'},
+    {value: 'Outros', name: 'Outros'},
+  ];
+
+  const history = useHistory();
+
+    async function handleRegister(e){
+    e.preventDefault();
+
+    const data= {
+      name,
+      initialDate,
+      finalDate,
+      initialHour,
+      finalHour,
+      categoryId,
+      description,
+    };
+
+      const data2= {
+      categoryName
+    };
+
+    try{
+      const response = await regEventoAPI.post('EventJPA', data);
+      const response2 = await regCategoriaAPI.post('CategoryJPA', data2);
+      
+      alert(`Evento Cadastrado !`);
+
+      history.push('/detalhes');
+    } catch (err) {
+      alert('Erro no cadastro, tente novamente.');
     }
-  
-    _handleSubmit(e) {
-      e.preventDefault();
-      // TODO: do something with -> this.state.file
-    }
-  
-    _handleImageChange(e) {
-      e.preventDefault();
-  
-      let reader = new FileReader();
-      let file = e.target.files[0];
-  
-      reader.onloadend = () => {
-        this.setState({
-          file: file,
-          imagePreviewUrl: reader.result
-        });
-      }
-  
-      reader.readAsDataURL(file)
-    }
-  
-    render() {
-      let {imagePreviewUrl} = this.state;
-      let $imagePreview = null;
-      if (imagePreviewUrl) {
-        $imagePreview = (<img src={imagePreviewUrl} />);
-      }
+  }
     
       return ( 
 
@@ -91,7 +104,7 @@ import {useHistory, Link} from 'react-router-dom';
 
      
 
-      <Form>   
+      <Form onSubmit={handleRegister}>   
 
 
         
@@ -109,8 +122,8 @@ import {useHistory, Link} from 'react-router-dom';
 
 <Col md={9}>
         <FormGroup>
-    
-          <h2>Vamos criar seu evento</h2>
+    <br></br>
+          <h2>VAMOS CRIAR O SEU EVENTO</h2>
           <br></br>
         </FormGroup>
      </Col>
@@ -125,7 +138,15 @@ import {useHistory, Link} from 'react-router-dom';
           <h4>1 - Qual o nome do seu evento?</h4>
           <br></br>
           <h5>Nome do evento:</h5>
-          <Input type="nome" name="evento" id="nomeEvento" placeholder="" />
+          <Input 
+          type="text" 
+          name="evento" 
+          id="nomeEvento" 
+          placeholder="Digite aqui..." 
+          value={name}
+          onChange={e => setName(e.target.value)}
+          required
+          />
           <br></br> 
 
           <h4>2 - Quando é o evento?</h4>
@@ -144,6 +165,9 @@ import {useHistory, Link} from 'react-router-dom';
           name="dataInicio"
           id="exampleDate"
           placeholder="date placeholder"
+          value={initialDate}
+          onChange={e => setInitialDate(e.target.value)}
+          required
           />  
       </FormGroup>
 </Col>
@@ -156,6 +180,9 @@ import {useHistory, Link} from 'react-router-dom';
           name="dataTermino"
           id="exampleDate"
           placeholder="date placeholder"
+          value={finalDate}
+          onChange={e => setFinalDate(e.target.value)}
+          required
           />
       </FormGroup> </Col>
 
@@ -167,6 +194,8 @@ import {useHistory, Link} from 'react-router-dom';
           name="horaInicio"
           id="exampleTime"
           placeholder="time placeholder"
+          value={initialHour}
+          onChange={e => setInitialHour(e.target.value)}
           />  
       </FormGroup>
 </Col>
@@ -179,6 +208,8 @@ import {useHistory, Link} from 'react-router-dom';
           name="horaTermino"
           id="exTime"
           placeholder="time placeholder"
+          value={finalHour}
+          onChange={e => setFinalHour(e.target.value)}
           />
       </FormGroup> </Col>
 </Row>
@@ -198,38 +229,33 @@ import {useHistory, Link} from 'react-router-dom';
   <FormGroup row>
 
 <Col sm={6}>
-<Input type="select" name="select" id="exampleSelect">
-<option>Curso</option>
-<option>WorkShops</option>
-<option>Palestra</option>
-<option>Outros</option>
-</Input>
+
+<Input type="select" name="select" id="exampleSelect" value={categoryName} onChange={e => setCategoryName(e.target.value)}>
+         {category.map((item, index) => (
+          <option value={item.value}>{item.name}</option>
+        ))}  
+        </Input>
+
+
 </Col>
 </FormGroup>
 
 <br></br>
-
-            <h4>4 - Adicione uma imagem</h4>
-               <br></br>
-            
-
-            <Col md={9}>
-          <form onSubmit={this._handleSubmit}>
-            <input md={9} type="file" onChange={this._handleImageChange} />
-          </form>
-          {$imagePreview}</Col> 
-          <br></br>
-          <br></br>
-          
+            <Col md={9}></Col>   
   </div>
 
-           <h4>
-              5 - Sua descrição do evento:
-            </h4>
+           <h4>4 - Sua descrição do evento:</h4>
             <br></br>
   <FormGroup>
         <h5>Conte sobre o seu evento...</h5>
-        <Input type="textarea" name="text" id="exampleText" />
+        <Input 
+        type="textarea" 
+        name="text" 
+        id="exampleText"
+        value={description}
+        onChange={e => setDescription(e.target.value)}
+        required 
+        />
       </FormGroup>
       <br></br>
       <br></br>
@@ -244,9 +270,9 @@ import {useHistory, Link} from 'react-router-dom';
   <Col md={9}></Col>
     
     <Col md={2}>  
-  <Link className="user" to="/detalhes">
+  
               <button className="button" type="submit">Continuar</button>
-             </Link>
+
 
   
 </Col> 
@@ -264,6 +290,6 @@ import {useHistory, Link} from 'react-router-dom';
           </div>
     );
   }
-  }
+  
 
-export default Evento ;
+export default RegistrarEvento ;

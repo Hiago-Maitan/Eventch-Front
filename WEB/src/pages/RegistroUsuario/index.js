@@ -12,6 +12,7 @@ import { FiUser, FiLogIn } from 'react-icons/fi'
 import { useHistory, Link } from 'react-router-dom';
 
 import { register } from '../../services/user';
+import regUsuario from '../../services/api';
 
 //toolbar import
 import Backdrop from '../../components/Backdrop/Backdrop'
@@ -50,7 +51,7 @@ export default function RegistroUsuario() {
 
     try {
 
-      const response = await register.post('#', data);
+      const response = await regUsuario.post('UserJPA', data);
 
       alert('Cadastro realizado!');
 
@@ -85,7 +86,7 @@ export default function RegistroUsuario() {
         <Form onSubmit={handleRegister}>
 
 
-          <div className="form-container">
+          <div className="container01">
             <Row form>
               <Col md={9}>
                 <FormGroup>
