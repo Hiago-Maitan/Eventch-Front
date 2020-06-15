@@ -27,7 +27,7 @@ function UserInfo(){
 
         content =  <div className="login-info">
                         <a href="/login" className="title">Login</a>
-                        <a href="/login" className="login-sub-title">Não possui login?</a>
+                        <a href="/registroUsuario" className="login-sub-title">Não possui login?</a>
                     </div>
     }
 
