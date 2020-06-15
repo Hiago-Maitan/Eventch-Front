@@ -2,4 +2,8 @@
     --primary-color: #1ABC9C;
     --secondary-color: #16A085;
     --third-color: #4D4D4D;
+    --bg-register: #EEEFEF;
 }
+
+/*Config*/
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap');

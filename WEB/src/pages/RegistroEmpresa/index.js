@@ -1,15 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useHistory, Link} from 'react-router-dom';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import { Col, Row,} from 'reactstrap';
+import { FiLogIn, FiUser } from 'react-icons/fi'
 
 import './style.css';
+import api from '../../services/api';
 
-import { FiLogIn, FiUser } from 'react-icons/fi'
 
 
 class RegistroEmpresa  extends React.Component{
-
  
     constructor(props) {
         super(props);
@@ -43,15 +43,53 @@ class RegistroEmpresa  extends React.Component{
       }
     
       render() {
+         
+
         let {imagePreviewUrl} = this.state;
         let $imagePreview = null;
         if (imagePreviewUrl) {
           $imagePreview = (<img src={imagePreviewUrl} />);
         }
 
+
+ // const [nameCompany, setnameCompany] = useState('');
+ //  const [nameFantasy, setnameFantasy] = useState('');
+ //  const [cnpj, setCnpj] = useState('');
+ //  const [email, setEmail] = useState('');
+ //  const [password, setPassword] = useState('');
+ //  const [descricao, setDescricao] = useState('');
+
+ //    const history = useHistory();
+
+ //    async function handleRegister(e){
+ //    e.preventDefault();
+
+ //    const data= {
+ //      nameCompany,
+ //      nameFantasy,
+ //      cnpj,
+ //      email,
+ //      cnpj,
+ //      email,
+ //      password,
+ //      descricao,
+ //    };
+
+ //    try{
+ //      const response = await api.post('UserJPA', data);
+      
+ //      alert(`Cadastro feito !`);
+
+ //      history.push('/');
+ //    } catch (err) {
+ //      alert('Erro no cadastro, tente novamente.');
+ //    }
+ //  }
            const color = {
            color: 'red'
            };
+
+ 
 
 	return(
 
@@ -134,7 +172,9 @@ class RegistroEmpresa  extends React.Component{
           name="nameCompany"
           id="nameCompany"
           placeholder=""
-          
+          // value={nameCompany}
+          // onChange={e => setnameCompany(e.target.value)}
+          required
           />  
       </FormGroup>
 </Col>
@@ -148,7 +188,9 @@ class RegistroEmpresa  extends React.Component{
           name="nameFantasy"
           id="nameFantasy"
           placeholder=""
-          
+          // value={nameFantasy}
+          // onChange={e => setnameCompany(e.target.value)}
+          required
           />
       </FormGroup> </Col>  
 </Row>
@@ -163,6 +205,9 @@ class RegistroEmpresa  extends React.Component{
           name="cnpj"
           id="cnpj"
           placeholder="XX. XXX. XXX/XXXX-XX"
+          // value={cnpj}
+          // onChange={e => setCnpj(e.target.value)}
+          required
           />  
       </FormGroup>
 </Col>
@@ -254,7 +299,7 @@ class RegistroEmpresa  extends React.Component{
             <br></br>
   <FormGroup>
         <h5>Conte um pouco sobre a sua proposta...<span style={color}>*</span></h5>
-        <Input type="textarea" name="text" id="exampleText" />
+        <Input type="textarea" name="descricao" id="exampleText" />
       </FormGroup>
       <br></br>
       <br></br>
