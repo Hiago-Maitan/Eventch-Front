@@ -9,22 +9,15 @@
     transform: translateX(0%);
 }
 
-.login-container h1{
+.login-container .colorContainer h1{
 	font-size: 2rem;
-	margin-bottom: 1.5rem;
+	margin-bottom: 2.5rem;
+	text-align: center;
 }
 
 .login-container form{
 	text-align: center;
 	max-width: 400px;
-}
-
-.login-container form h1{
-	margin-left: 10px;
-	margin-bottom: 50px;
-	text-align: center;
-	font-size: 35px;
-	color: #1ABC9C;
 }
 
 .login-container form input{
@@ -41,4 +34,24 @@
   float: left;
   width: 100%;
   padding: 100px;
+}
+
+.button{
+background-color: black;
+color: #16A085;
+width: 86%;
+border-radius: 4px;
+}
+
+.colorContainer{
+    margin:0;
+    background-color: #16A085;
+    padding: 50px;
+    border-radius: 8px;
+    margin-left: -30px;
+    /*margin-right: 50px;*/
+    margin-bottom: 20px;
+    /*border: 1px solid black;*/
+    box-shadow: rgba(0, 0, 0, 0.50) 1px 1px 4px 4px;
+
 }

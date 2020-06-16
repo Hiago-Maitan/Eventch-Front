@@ -5,91 +5,59 @@ import { Col, Row,} from 'reactstrap';
 import { FiLogIn, FiUser } from 'react-icons/fi'
 
 import './style.css';
-import api from '../../services/api';
+import regEmpresaAPI from '../../services/regEmpresaAPI';
 
 
+function RegistroEmpresa(){
 
-class RegistroEmpresa  extends React.Component{
- 
-    constructor(props) {
-        super(props);
-        this.state = {
-          file: '',
-          imagePreviewUrl: ''
-        };
-        this._handleImageChange = this._handleImageChange.bind(this);
-        this._handleSubmit = this._handleSubmit.bind(this);
-      }
+  // var state ={
+  //   DateTime : new Date().toLocaleString(), 
     
-      _handleSubmit(e) {
-        e.preventDefault();
-        // TODO: do something with -> this.state.file
-      }
-    
-      _handleImageChange(e) {
-        e.preventDefault();
-    
-        let reader = new FileReader();
-        let file = e.target.files[0];
-    
-        reader.onloadend = () => {
-          this.setState({
-            file: file,
-            imagePreviewUrl: reader.result
-          });
-        }
-    
-        reader.readAsDataURL(file)
-      }
-    
-      render() {
-         
+  // }
 
-        let {imagePreviewUrl} = this.state;
-        let $imagePreview = null;
-        if (imagePreviewUrl) {
-          $imagePreview = (<img src={imagePreviewUrl} />);
-        }
+  const [socialReason, setSocialReason] = useState('');
+  const [fantasyName, setFantasyName] = useState('');
+  const [cnpj, setCnpj] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [password, setPassword] = useState('');
+  const [about, setAbout] = useState('');
+  const [localDate, setlocalDate] = useState('');
 
 
- // const [nameCompany, setnameCompany] = useState('');
- //  const [nameFantasy, setnameFantasy] = useState('');
- //  const [cnpj, setCnpj] = useState('');
- //  const [email, setEmail] = useState('');
- //  const [password, setPassword] = useState('');
- //  const [descricao, setDescricao] = useState('');
+    const history = useHistory();
 
- //    const history = useHistory();
+    async function handleRegister(e){
+    e.preventDefault();
 
- //    async function handleRegister(e){
- //    e.preventDefault();
+   
+    // var localDate = this.state.DateTime;
 
- //    const data= {
- //      nameCompany,
- //      nameFantasy,
- //      cnpj,
- //      email,
- //      cnpj,
- //      email,
- //      password,
- //      descricao,
- //    };
+    const data= {
+      socialReason,
+      fantasyName,
+      cnpj,
+      email,
+      phone,
+      password,
+      about,
+      localDate,
+    };
 
- //    try{
- //      const response = await api.post('UserJPA', data);
+    try{
+      const response = await regEmpresaAPI.post('CompanyJPA',data);
       
- //      alert(`Cadastro feito !`);
+      alert(`Cadastro feito !`);
 
- //      history.push('/');
- //    } catch (err) {
- //      alert('Erro no cadastro, tente novamente.');
- //    }
- //  }
+      history.push('/');
+    } catch (err) {
+      alert('Erro no cadastro, tente novamente.');
+    }
+  }
+
            const color = {
            color: 'red'
            };
-
- 
 
 	return(
 
@@ -129,7 +97,7 @@ class RegistroEmpresa  extends React.Component{
 
 
 <div >
-      <Form>         
+      <Form onSubmit={handleRegister}>         
 <br></br>
 <br></br>    
 <br></br>
@@ -145,7 +113,7 @@ class RegistroEmpresa  extends React.Component{
 <Col md={9}>
         <FormGroup>
     
-          <h2>Faça seu cadastro</h2>
+          <h2 className="form-header">Faça seu cadastro</h2>
           <br></br>
         </FormGroup>
      </Col>
@@ -157,7 +125,7 @@ class RegistroEmpresa  extends React.Component{
     <Col md={1}></Col>
            
   <Col md={7}>
-          <h4>1-Dados da empresa</h4>
+          <h4> 1 - Dados da empresa</h4>
           <br></br>
   </Col>
  </Row>
@@ -169,11 +137,11 @@ class RegistroEmpresa  extends React.Component{
         <h5>Nome da instituição: <span style={color}>*</span></h5>
         <Input
           type="text"
-          name="nameCompany"
-          id="nameCompany"
-          placeholder=""
-          // value={nameCompany}
-          // onChange={e => setnameCompany(e.target.value)}
+          name="socialReason"
+          id="sociaReason"
+          placeholder="Digite aqui..."
+          value={socialReason}
+          onChange={e => setSocialReason(e.target.value)}
           required
           />  
       </FormGroup>
@@ -185,11 +153,11 @@ class RegistroEmpresa  extends React.Component{
         <h5>Nome fantasia: <span style={color}>*</span></h5>
         <Input
           type="text"
-          name="nameFantasy"
-          id="nameFantasy"
-          placeholder=""
-          // value={nameFantasy}
-          // onChange={e => setnameCompany(e.target.value)}
+          name="fantasyName"
+          id="fantasyName"
+          placeholder="Digite aqui..."
+          value={fantasyName}
+          onChange={e => setFantasyName(e.target.value)}
           required
           />
       </FormGroup> </Col>  
@@ -205,8 +173,8 @@ class RegistroEmpresa  extends React.Component{
           name="cnpj"
           id="cnpj"
           placeholder="XX. XXX. XXX/XXXX-XX"
-          // value={cnpj}
-          // onChange={e => setCnpj(e.target.value)}
+          value={cnpj}
+          onChange={e => setCnpj(e.target.value)}
           required
           />  
       </FormGroup>
@@ -220,25 +188,41 @@ class RegistroEmpresa  extends React.Component{
            
 
 <Col md={7}>
-                  <h4>2-Dados de conta</h4>
+                  <h4> 2 - Dados de conta</h4>
                   <br></br>
 
      </Col>
 </Row>
 
 <Row form>
+
 <Col md={1}></Col>
       <Col md={3}>
         <FormGroup>
-        <h5>E-mail: <span style={color}>*</span></h5>
+        <h5>Email: <span style={color}>*</span></h5>
         <Input
           type="email"
           name="email"
           id="email"
-          placeholder=""
+          placeholder="Digite seu email..."
+          value={email}
+          onChange={e => setEmail(e.target.value)}
           />  
       </FormGroup>
 </Col>
+ <Col md={3}>
+      <FormGroup>
+     
+        <h5>Telefone: <span style={color}>*</span></h5>
+        <Input
+          type="number"
+          name="phone"
+          id="phone"
+          placeholder="(00) 0 0000-0000"
+          value={phone}
+          onChange={e => setPhone(e.target.value)}
+          />
+      </FormGroup> </Col>  
 </Row>
 
 <Row form>
@@ -252,6 +236,8 @@ class RegistroEmpresa  extends React.Component{
           name="password"
           id="password"
           placeholder="*******"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
           />  
       </FormGroup>
 </Col>
@@ -261,8 +247,8 @@ class RegistroEmpresa  extends React.Component{
         <h5>Confime sua senha: <span style={color}>*</span></h5>
         <Input
           type="password"
-          name="password"
-          id="password"
+          name="confirmPassword"
+          id="confirmPassword"
           placeholder="*******"
           />
       </FormGroup> </Col>  
@@ -273,38 +259,28 @@ class RegistroEmpresa  extends React.Component{
            
 
 <Col md={9}>
-        <FormGroup>
-         
-      <div>
-        <br></br>
-       
-            <h4>3-Adicione uma imagem</h4>
-               <br></br>
-            
 
-            <Col md={9}>
-          <form onSubmit={this._handleSubmit}>
-            <input md={9} type="file" onChange={this._handleImageChange} />
-          </form>
-          {$imagePreview}</Col> 
-          <br></br>
-          <br></br>
-          <br></br>
-
-  </div>
-
+<br></br>
            <h4>
-              4-Descrição da instituição:
+              3 - Descrição da instituição:
             </h4>
             <br></br>
   <FormGroup>
-        <h5>Conte um pouco sobre a sua proposta...<span style={color}>*</span></h5>
-        <Input type="textarea" name="descricao" id="exampleText" />
+        <h5>Conte um pouco sobre a sua empresa<span style={color}> *</span></h5>
+        <Input 
+        type="textarea" 
+        name="about"
+         id="about"
+         placeholder="Digite aqui..."
+          value={about}
+          onChange={e => setAbout(e.target.value)}
+         />
+
       </FormGroup>
       <br></br>
       <br></br>
       <br></br>    
-          </FormGroup>
+          
      </Col>
 </Row>
 
@@ -329,7 +305,72 @@ class RegistroEmpresa  extends React.Component{
           </div>
           </div>
 		)
-    }}
+    }
     
     
     export default RegistroEmpresa;
+
+//.
+// class RegistroEmpresa  extends React.Component{
+ 
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //       file: '',
+    //       imagePreviewUrl: ''
+    //     };
+    //     this._handleImageChange = this._handleImageChange.bind(this);
+    //     this._handleSubmit = this._handleSubmit.bind(this);
+    //   }
+    
+    //   _handleSubmit(e) {
+    //     e.preventDefault();
+    //     // TODO: do something with -> this.state.file
+    //   }
+    
+    //   _handleImageChange(e) {
+    //     e.preventDefault();
+    
+    //     let reader = new FileReader();
+    //     let file = e.target.files[0];
+    
+    //     reader.onloadend = () => {
+    //       this.setState({
+    //         file: file,
+    //         imagePreviewUrl: reader.result
+    //       });
+    //     }
+    
+    //     reader.readAsDataURL(file)
+    //   }
+    
+    //   render() {
+         
+
+    //     let {imagePreviewUrl} = this.state;
+    //     let $imagePreview = null;
+    //     if (imagePreviewUrl) {
+    //       $imagePreview = (<img src={imagePreviewUrl} />);
+    //     }
+
+//UPLOAD DE IMG
+    //         <FormGroup>
+         
+//       <div>
+//         <br></br>
+       
+//             <h4>3-Adicione uma imagem</h4>
+//                <br></br>
+            
+
+//             <Col md={9}>
+//           <form onSubmit={this._handleSubmit}>
+//             <input md={9} type="file" onChange={this._handleImageChange} />
+//           </form>
+//           {$imagePreview}</Col> 
+//           <br></br>
+//           <br></br>
+//           <br></br>
+
+//   </div>
+// </FormGroup>
