@@ -14,6 +14,7 @@ const toolbar = props => (
             <div className="bg-logo"><a href="/"><img src={logo} className="img-logo"/></a></div>
             <div className="menu-item">
                 <ul>
+                    <li><a href="/" >Home</a></li> 
                     <li><a href="/registerEvent" >Publicar Eventos</a></li>
                     <li><a href="/" >Sobre Nós</a></li>
                 </ul>

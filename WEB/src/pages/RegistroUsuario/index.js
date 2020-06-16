@@ -291,8 +291,3 @@ export default function RegistroUsuario() {
     </>
   );
 }
-
-
-
-
-
