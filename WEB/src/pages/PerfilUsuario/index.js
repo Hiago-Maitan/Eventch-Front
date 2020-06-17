@@ -6,7 +6,37 @@ import SideDrawer from '../../components/SideDrawer/SideDrawer';
 import Backdrop from '../../components/Backdrop/Backdrop';
 import UserWhite from '../../Image/user_white.png';
 
+import {perfilUsuarioAPI, perfilEmpresaAPI} from '../../services/perfilUsuarioAPI';
+
 export default function PerfilUsuario() {
+
+    const username = localStorage.getItem('@welcome-app/username');
+    
+    // const [name, setName] = useState('');
+    // const [surname, setSurname] = useState('');
+    // const [phone, setPhone] = useState('');
+    // const [email, setEmail] = useState('');
+    const [userId, setUserId] = useState('');
+
+    const [user, setUser] = useState({});
+
+    // const data= {
+    //   name,
+    //   surname,
+    //   phone,
+    //   email,
+    // };
+
+    try{
+      const response =  perfilUsuarioAPI({userId}).then(res => setUser(res.data));
+      
+      alert(`OK`);
+
+    } catch (err) {
+      alert('Erro, tente novamente.');
+    }
+  
+
      const [sideDrawerOpen, setOpen] = useState(false);
 
      const handleSideClose = () => setOpen(false);
@@ -31,8 +61,8 @@ export default function PerfilUsuario() {
                 <div className="text-flex2">
                   <img src={UserWhite}/>
                   <div className="dados">
-                    <h1>Hiago Maitan</h1>
-                    <h2>Tel: (00)00000-0000</h2>
+                    <h1>{user.name}</h1>
+                    <h2>Tel: {user.phone}</h2>
                     <h2>email: hiago@gmail.com</h2>
                     
                   </div>   

@@ -1,13 +1,98 @@
-.evento-container{
-	width: 100%;
-    max-width: 1120px;
+@import '../../colors.css';
+
+.event-container{
+    width: 100%;
     height: 100vh;
-    margin: 0;
-	
-	margin-top: 200px;
-	margin-left: 50px;
+    display: flex;
+    flex-direction: row;
+    margin-top: 130px;
 }
 
+.event-info{
+    width: 50vw;
+    margin: 0px 0px 2rem 3rem;
+}
+
+.event-info h1{
+    display: flex;
+    justify-content: start;
+    font-size: 35px;
+    margin-bottom: 1.6rem;
+    padding-bottom: .8rem;
+    border-bottom: .4rem solid var(--third-color);
+}
+
+.event-sub-title{
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.event-sub-title div{
+    margin-bottom: 0.5rem;
+}
+
+.event-info p{
+    margin-top: 2rem;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 22px;
+    text-align: justify;
+    color: var(--third-color);
+}
+
+.company-info{
+    width: 50vw;
+    padding: 0rem 5rem 5rem 5rem;
+}
+
+.company-content{
+    border-radius: 15px;
+    background-color: var(--secondary-color);
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+
+.company-content img{
+    width: 100px;
+    height: 100px;
+    margin: .5rem .5rem .5rem .5rem;
+}
+
+.company-content p{
+    word-break: break-word;
+    margin-bottom: 0rem;
+}
+
+.carousel{
+    width: 100%;
+    height: 100%;
+}
+
+.btn-container{
+    width: 100%;
+    height: 80px;
+    background-color: var(--secondary-color);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 2rem;
+}
+.btn-reserve button{
+    border: none;
+    padding: .5rem;
+    color: var(--third-color);
+    background-color: #ffffff;
+}
+
+/* mokado */
 .evento-container .content{
 	width: 100%;
 }

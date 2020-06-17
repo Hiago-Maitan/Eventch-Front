@@ -9,9 +9,13 @@ function UserInfo(){
     let img
     
     const handleLoggout = () => {
+        alert(`Até mais, ${localStorage.getItem('@welcome-app/username')}.`)
+
         localStorage.removeItem('isAuthenticated');
         localStorage.removeItem('expirationDate');
         localStorage.removeItem('Username');
+
+        
     }
 
     if(isLogged){
@@ -19,7 +23,9 @@ function UserInfo(){
             img = <img src={userImage}/>
             content = 
             <div className="login-info">
-                <a href="/perfilUsuario" className="title">{localStorage.getItem('Username')}</a>
+            
+
+                <a href="/perfilUsuario" className="title">{localStorage.getItem('')}</a>
                 <a href="/login" className="login-sub-title" onClick={handleLoggout}>Sair</a>
             </div>
     } else {

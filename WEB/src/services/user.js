@@ -1,9 +1,11 @@
-import axios from 'axios'
+//Conexão de Login Banco Outsystems
 
-const login = ({id}) => axios.post(`https://eventech.outsystemscloud.com/Core/rest/User/v1/${id}`)
+import axios from 'axios';
+
+const login = ({email, password}) => axios.get(`https://eventech-back.herokuapp.com/v2/users/${email}/${password}`)
 
 const register = axios.create({
-    baseURL:'https://eventech.outsystemscloud.com/Core/rest/User/v1'
+    baseURL:'https://eventech-back.herokuapp.com/v2/users'
 });
 
 

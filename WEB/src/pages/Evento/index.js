@@ -1,9 +1,22 @@
-import React, {useState, useEffect} from 'react';
-import {useHistory, Link} from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useHistory, Link } from 'react-router-dom';
 
 import { FiCalendar, FiNavigation2, FiUser, FiMapping } from 'react-icons/fi';
 
-import event from '../../services/event';
+import { event } from '../../services/event';
+import  regEventoAPI  from '../../services/regEventoAPI';
+
+
+//import toolbar
+import Toolbar from '../../components/Toolbar/Toolbar'
+import SideDrawer from '../../components/SideDrawer/SideDrawer'
+import Backdrop from '../../components/Backdrop/Backdrop'
+
+//company img
+import companyLogo from './img/user_white.png'
+import image1 from './img/image1.jpg'
+import image2 from './img/image2.jpg'
+import image3 from './img/image3.jpg'
 
 import './styles.css';
 
@@ -17,32 +30,76 @@ import {
 
 const items = [
   {
-   id: 1,
-    caption: 'Slide 1'  
+    id: 1,
+    caption: 'Slide 1'
   },
   {
-   id: 2,
-    caption: 'Slide 2'    
+    id: 2,
+    caption: 'Slide 2'
   },
   {
-   id: 3,  
-    caption: 'Slide 3'    
+    id: 3,
+    caption: 'Slide 3'
   },
   {
-   id: 4,
-    caption: 'Slide 41'    
+    id: 4,
+    caption: 'Slide 41'
   }
 ];
 
 const Evento = (props) => {
-  //const [event, setEvent] = useState({});
+
+  const [eventInfo, setEvent] = useState({
+    Id: 0,
+    Name: "",
+    InitialDate: "",
+    FinalDate: "",
+    PlaceId: {
+      Id: 0,
+      Name: "",
+      Description: "",
+      Capacity: 0,
+      City: "",
+      State: "",
+      ZipCode: "",
+      Street: "",
+      StreetNumber: 0
+    },
+    CreatedBy: {
+      Id: 0,
+      Name: "",
+      About: "",
+      Phone: "",
+      SocialReason: "",
+      FantasyName: ""
+    },
+    Description: "",
+    AgeRange: "",
+    Category: ""
+  });
+
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
 
-  /*useEffect(()=>{
-    const response = event({id}).then(res => setEvent(res.data));
-    console.log(event);
-  },[event]);*/
+  const history = useHistory();
+
+  let eventId = props.match.params.id;
+
+  async function handleEvent(){
+    if (eventId > 0) {
+      try {
+        const response = await event({ eventId }).then(res => {setEvent(res.data)});
+      } catch (err) {
+        history.push('/')
+      }
+    } else {
+      history.push('/')
+    }
+  }
+
+  useEffect(() => {
+    handleEvent();
+  }, []);
 
   const next = () => {
     if (animating) return;
@@ -64,7 +121,7 @@ const Evento = (props) => {
   const slides = items.map((item) => {
     return (
       <CarouselItem
-      className="custom-tag"
+        className="custom-tag"
         onExiting={() => setAnimating(true)}
         onExited={() => setAnimating(false)}
         key={item.src}
@@ -75,102 +132,136 @@ const Evento = (props) => {
     );
   });
 
+  //Responsividade da Toolbar
+
+  const [sideDrawerOpen, setOpen] = useState(false);
+
+  const handleSideClose = () => setOpen(false);
+  const handleSideOpen = () => setOpen(true);
+
+  let backdrop;
+
+  if (sideDrawerOpen) {
+    backdrop = <Backdrop click={handleSideClose} />
+  }
   return (
+    <>
+      <Toolbar handleSideOpen={handleSideOpen} />
+      <SideDrawer show={sideDrawerOpen} />
+      {backdrop}
 
-    <div className="line">
-             <div className="navbar">
+      <div className="event-container">
+        <div className="event-info">
+          <h1>{eventInfo.Name}</h1>
 
-              <Link className="logo" to="/"></Link>
-
-                <div className="dropdown dropOne">
-                 <button className="dropbtn">Eventos </button>
-
-                   <div className="dropdown-content">
-                      <a href="#">Publicar Evento</a>
-                      <a href="#">Em Destaque</a>
-                    </div>
-                </div>
-
-                <div className="dropdown dropTwo">
-                    <button className="dropbtn">Sobre Nós </button>
-
-                    <div className="dropdown-content">
-                      <a href="#">Projeto</a>
-                      <a href="#">Quem Somos</a>
-                    </div>
-                </div>
-                        
-                    <div className="dropdown dropOne">
-
-                      <Link className="user" to="/login">
-                        <FiUser size={40} color="#1ABC9C" />
-                           Login
-                      </Link>
-                    </div>
-
+          <div className="event-sub-title">
+            <div>
+              <FiNavigation2 className="" size={20} color="#1ABC9C" />{eventInfo.PlaceId.Street}, {eventInfo.PlaceId.StreetNumber} - {eventInfo.PlaceId.City} - {eventInfo.PlaceId.State}
             </div>
+            <div>
+              <FiCalendar className="" size={20} color="#1ABC9C" />
+              {eventInfo.InitialDate} - {eventInfo.FinalDate}
+            </div>
+          </div>
+          <p>{eventInfo.Description}</p>
+        </div>
+        <div className="company-info">
+          <div className="company-content">
+            <img src={companyLogo} />
+            <h1>{eventInfo.CreatedBy.Name}</h1>
+            <p>{eventInfo.CreatedBy.About}</p>
+          </div>
+        </div>
+      </div>
+      <div className="carousel">
 
- <div className="evento-container">
-   <div className="content">
+        <style>
+          {
+            `.custom-tag {
+                  max-width: 100%;
+                  height: 500px;
+                  background: black;
+                }`
+          }
+        </style>
 
-  <div className="one">
-   <section>
-     <h1>JAVA PARA INICIANTES</h1>
-    <h2> <FiNavigation2 className="" size={20} color="#1ABC9C" /> Rua Haddock Lobo, 595 - Cerqueira César, São Paulo - SP</h2>
-    <h2> <FiCalendar className="" size={20} color="#1ABC9C" /> 25/12/2020 - 01/01/2021 </h2>
+        <Carousel
+          activeIndex={activeIndex}
+          next={next}
+          previous={previous}
+        >
+          <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={goToIndex} />
+          {slides}
+          <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
+          <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
+        </Carousel>
+      </div>
+      <div className="btn-container">
 
-     <p>Java é o ambiente computacional, ou plataforma, criada pela empresa estadunidense Sun Microsystems, e vendida para a Oracle depois de alguns anos. A plataforma permite desenvolver programas utilizando a linguagem de programação Java.</p>
+        <div className="btn-reserve">
+          <button type="button">Reservar Ingresso</button>
+        </div>
 
-    </section>
-</div>
+      </div>
+      {/*<div className="content">
 
-<div className="container-logo">
-<div className="logo-evento">
+          <div className="one">
+            <section>
+              <h1>{eventInfo.Name}</h1>
+  <h2> <FiNavigation2 className="" size={20} color="#1ABC9C" />{}</h2>
+              <h2> <FiCalendar className="" size={20} color="#1ABC9C" /> {eventInfo.InitialDate} - {eventInfo.FinalDate} </h2>
 
-    <h1>-----</h1>
-    <h2>Nimbi</h2>
-    
-     <p>Java é o ambiente computacional, ou plataforma, criada pela empresa estadunidense Sun Microsystems, e vendida para a Oracle depois de alguns anos. A plataforma permite desenvolver programas utilizando a linguagem de programação Java.</p>
-</div>
-</div>
+              <p>{eventInfo.Description}</p>
 
-<div className="carousel">
+            </section>
+          </div>
 
- <style>
-        {
-          `.custom-tag {
+          <div className="container-logo">
+            <div className="logo-evento">
+
+              <h2>{eventInfo.CreatedBy.Name}</h2>
+
+              <p>{eventInfo.CreatedBy.About}</p>
+            </div>
+          </div>
+
+          <div className="carousel">
+
+            <style>
+              {
+                `.custom-tag {
               max-width: 100%;
               height: 500px;
               background: black;
             }`
-        }
-      </style>
+              }
+            </style>
 
-<Carousel
-      activeIndex={activeIndex}
-      next={next}
-      previous={previous}
-    >
-      <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={goToIndex} />
-      {slides}
-      <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
-      <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
-    </Carousel>
-</div>
-
-
-<div className="border-btnIngresso">
-
-<div>
-<button type="button" className="button btnIngresso">Reservar Ingresso</button>
-</div>
-
-</div>
+            <Carousel
+              activeIndex={activeIndex}
+              next={next}
+              previous={previous}
+            >
+              <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={goToIndex} />
+              {slides}
+              <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
+              <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
+            </Carousel>
+          </div>
 
 
-    </div>
- </div>
-</div>
+          <div className="border-btnIngresso">
+
+            <div>
+              <button type="button" className="button btnIngresso">Reservar Ingresso</button>
+            </div>
+
+          </div>
+
+
+        </div>
+            */}
+    </>
   );
 }
 
