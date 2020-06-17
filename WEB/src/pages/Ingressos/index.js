@@ -11,6 +11,12 @@ import {useHistory, Link} from 'react-router-dom';
 import regIngressosAPI from '../../services/regIngressosAPI';
 
 
+//toolbar import
+import Backdrop from '../../components/Backdrop/Backdrop'
+import Toolbar from '../../components/Toolbar/Toolbar'
+import SideDrawer from '../../components/SideDrawer/SideDrawer'
+
+
 function Ingresso(){
 
   const [name, setName] = useState('');
@@ -60,46 +66,30 @@ function Ingresso(){
     color: 'red'
   };
 
-return(
- <div className="line">
-            <div className="navbar">
+  
+ //Responsividade da Toolbar
 
-              <Link className="logo" to="/"></Link>
+ const [sideDrawerOpen, setOpen] = useState(false);
 
-                <div className="dropdown dropOne">
-                 <button className="dropbtn">Eventos </button>
+ const handleSideClose = () => setOpen(false);
+ const handleSideOpen = () => setOpen(true);
 
-                   <div className="dropdown-content">
-                      <a href="#">Publicar Evento</a>
-                      <a href="#">Em Destaque</a>
-                    </div>
-                </div>
+ let backdrop;
 
-                <div className="dropdown dropTwo">
-                    <button className="dropbtn">Sobre Nós </button>
+ if (sideDrawerOpen) {
+   backdrop = <Backdrop click={handleSideClose} />
+ }
 
-                    <div className="dropdown-content">
-                      <a href="#">Projeto</a>
-                      <a href="#">Quem Somos</a>
-                    </div>
-                </div>
-                        
-                    <div className="dropdown dropOne">
+return (
+ 
 
-                      <Link className="user" to="/login">
-                        <FiUser size={40} color="#1ABC9C" />
-                           Login
-                      </Link>
-                    </div>
-            </div>
 
-   <br></br>
-<br></br>    
-<br></br>
-<br></br>              
+ <div className="margin-top">
 
-    
-
+   <Toolbar handleSideOpen={handleSideOpen} />
+   <SideDrawer show={sideDrawerOpen} />
+   {backdrop}
+       
 <div>
 <Form onSubmit={handleRegister}>
 

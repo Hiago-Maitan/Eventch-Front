@@ -4,22 +4,31 @@ import userImage from './user.png'
 
 function UserInfo(){
     const [isLogged,setLogged] = useState(localStorage.getItem('isAuthenticated'));
+    const [isCompany,setCompany] = useState(localStorage.getItem('isCompany'));
 
     let content
     let img
+    let href;
+
+    if(isCompany){
+        href='/perfilEmpresa';
+    } else{ 
+        href='/perfilUsuario';
+    };
     
     const handleLoggout = () => {
         localStorage.removeItem('isAuthenticated');
         localStorage.removeItem('expirationDate');
         localStorage.removeItem('Username');
+        localStorage.removeItem('userId');
+        localStorage.removeItem('isCompany');
     }
-
     if(isLogged){
-        
+
             img = <img src={userImage}/>
             content = 
             <div className="login-info">
-                <a href="/perfilUsuario" className="title">{localStorage.getItem('Username')}</a>
+                <a href={href} className="title">{localStorage.getItem('Username')}</a>
                 <a href="/login" className="login-sub-title" onClick={handleLoggout}>Sair</a>
             </div>
     } else {

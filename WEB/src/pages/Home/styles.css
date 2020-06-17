@@ -1,3 +1,5 @@
+@import '../../colors.css';
+
 .middle[type=text] {
     width: 50%;
     box-sizing: border-box;
@@ -13,6 +15,9 @@
     /*  */
 }
 
+.list-placeholder{
+  padding: 5rem;
+}
 
 div.teste{
 background-color: #0fc9af;
@@ -22,8 +27,8 @@ background-color: #0fc9af;
 h1.blocktext {
   margin-top: 350px;
   text-align: center;
-  color: #0fc9af;
-  font-size: 90px;
+  color: var(--secondary-color);
+  font-size: 65px;
   font-weight: bold;
 
 }

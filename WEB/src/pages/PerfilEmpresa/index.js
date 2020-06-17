@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import './styles.css';
 import Toolbar from '../../components/Toolbar/Toolbar';
@@ -7,7 +7,45 @@ import Backdrop from '../../components/Backdrop/Backdrop';
 import UserWhite from '../../Image/user_white.png';
 import Work from '../../Image/work.png';
 
+//import api
+import {companyById} from '../../services/company'
+
 export default function PerfilEmpresa(){
+    const [company, setCompany] = useState(
+        {
+            Id: 0,
+            Name: "",
+            Password: "",
+            Email: "",
+            About: "",
+            CNPJ: "",
+            Phone: "",
+            Creation_Date: "",
+            Is_Active: true,
+            SocialReason: "",
+            FantasyName: "",
+            HasPermissionAPI: true
+          }
+    );
+
+    let companyId = localStorage.getItem('userId');
+
+    async function handleCompany(){
+        if (companyId > 0) {
+          try {
+            const response = await companyById({ companyId }).then(res => {setCompany(res.data)});
+          } catch (err) {
+            
+          }
+        } else {
+          
+        }
+      }
+
+      useEffect(()=>{
+        handleCompany();
+      },[])
+
     const [sideDrawerOpen, setOpen] = useState(false);
 
      const handleSideClose = () => setOpen(false);
@@ -25,19 +63,20 @@ export default function PerfilEmpresa(){
     <Toolbar handleSideOpen={handleSideOpen}/>
     <SideDrawer show={sideDrawerOpen}/>
     {backdrop}
+
 		<div>
            <div class="color-container">
 
             <div className="text-flex2">
               <img src={UserWhite}/>
               <div className="dados">
-              <h1>Hiago Maitan</h1>
-              <h2>Tel:(00)00000-0000</h2>
-              <h2>email:empresa@gmail.com</h2>
+              <h1>{company.FantasyName}</h1>
+              <h2>{company.Phone}</h2>
+                <h2>{company.Email}</h2>
         </div>
         </div> 
 
-        <div class="company">
+        {/*<div class="company">
         <div className="text-flex2">
             <img src={Work}/>
             <div className="dados">
@@ -46,7 +85,7 @@ export default function PerfilEmpresa(){
             <h2 className="about">TIVIT é uma multinacional brasileira de soluções digitais, com operação em 10 países da América Latina. Em 2016, foi considerada uma das 3 maiores prestadoras de serviços de tecnologia da informação do Brasil.</h2>
         </div>
         </div>
-        </div>
+    </div>*/}
         
     </div>
 

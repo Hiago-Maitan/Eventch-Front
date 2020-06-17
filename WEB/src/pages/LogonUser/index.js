@@ -27,16 +27,22 @@ export default function Logon() {
       let expiration_date;
       let is_authenticated;
       let username;
+      let user_id;
+      let is_company;
 
       const response = await login({email,password}).then( res => {
         expiration_date = res.data.expiration_date;
         is_authenticated = res.data.is_authenticated;
         username = res.data.username;
+        user_id = res.data.user_id;
+        is_company = res.data.is_company;
       });
 
       localStorage.setItem('isAuthenticated',is_authenticated);
       localStorage.setItem('expirationDate',expiration_date);
       localStorage.setItem('Username',username);
+      localStorage.setItem('userId',user_id);
+      localStorage.setItem('isCompany',is_company);
 
       history.push('/');
       

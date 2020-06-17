@@ -21,8 +21,6 @@ import PerfilEmpresa from './pages/PerfilEmpresa';
 
 export default function Routes() {
 
-  let id =4;
-
   return (
     <BrowserRouter>
       <Switch>

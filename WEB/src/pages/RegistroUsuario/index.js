@@ -51,7 +51,7 @@ export default function RegistroUsuario() {
 
     try {
 
-      const response = await regUsuario.post('UserJPA', data);
+      const response = await register.post('#', data);
 
       alert('Cadastro realizado!');
 
@@ -237,6 +237,8 @@ export default function RegistroUsuario() {
                     type="email"
                     name="email"
                     id="email"
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
                     placeholder=""
                     required
                   />
@@ -254,6 +256,8 @@ export default function RegistroUsuario() {
                     type="password"
                     name="password"
                     id="password"
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}
                     placeholder="*********"
                     required
                   />

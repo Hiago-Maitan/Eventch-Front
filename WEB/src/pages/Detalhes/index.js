@@ -6,55 +6,41 @@ import { FiUser, FiLogIn } from 'react-icons/fi'
 import {useHistory, Link} from 'react-router-dom';
 
 
+
+//toolbar import
+import Backdrop from '../../components/Backdrop/Backdrop'
+import Toolbar from '../../components/Toolbar/Toolbar'
+import SideDrawer from '../../components/SideDrawer/SideDrawer'
+
 export default function Detalhes (props) {
   
    const color = {
     color: 'red'
   };
+
+
+    //Responsividade da Toolbar
+
+    const [sideDrawerOpen, setOpen] = useState(false);
+
+    const handleSideClose = () => setOpen(false);
+    const handleSideOpen = () => setOpen(true);
+  
+    let backdrop;
+  
+    if (sideDrawerOpen) {
+      backdrop = <Backdrop click={handleSideClose} />
+    }
   
   return (
     
-    <div className="line">
-    <div className="navbar">
 
-     <Link className="logo" to="/"></Link>
 
-       <div className="dropdown dropOne">
-        <button className="dropbtn">Eventos </button>
+    <div className="margin-top">
 
-          <div className="dropdown-content">
-             <a href="#">Publicar Evento</a>
-             <a href="#">Em Destaque</a>
-           </div>
-       </div>
-
-       <div className="dropdown dropTwo">
-           <button className="dropbtn">Sobre Nós </button>
-
-           <div className="dropdown-content">
-             <a href="#">Projeto</a>
-             <a href="#">Quem Somos</a>
-           </div>
-       </div>
-               
-           <div className="dropdown dropOne">
-
-             <Link className="user" to="/login">
-               <FiUser size={40} color="#1ABC9C" />
-                  Login
-             </Link>
-           </div>
-
-   </div>
-
-<br></br>
-<br></br>
-<br></br>
-<br></br>
-<br></br>
-<br></br>
-
-    <div>
+      <Toolbar handleSideOpen={handleSideOpen} />
+      <SideDrawer show={sideDrawerOpen} />
+      {backdrop}
 
  <div className="container">   
 <Row form>
@@ -192,10 +178,7 @@ export default function Detalhes (props) {
 </Col>
 </Row>
 </div>
-</div>   
-</div>
-
-)
+</div>)
 }
 
 

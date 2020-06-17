@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import './styles.css';
 import Toolbar from '../../components/Toolbar/Toolbar';
@@ -6,7 +6,48 @@ import SideDrawer from '../../components/SideDrawer/SideDrawer';
 import Backdrop from '../../components/Backdrop/Backdrop';
 import UserWhite from '../../Image/user_white.png';
 
+//userById
+import {userById} from '../../services/user';
+
 export default function PerfilUsuario() {
+
+    const [user, setUser] = useState(
+        {
+            Id: 0,
+            Name: "",
+            Surname: "",
+            Password: "",
+            Email: "",
+            Sex: "",
+            Birthday: "",
+            CPF: "",
+            Phone: "",
+            Creation_Date: "",
+            CompanyId: 0,
+            Is_Active: true,
+            IdCategory: 0
+          }
+    );
+
+    let userId = localStorage.getItem('userId');
+
+    async function handleUser(){
+        if (userId > 0) {
+          try {
+            const response = await userById({ userId }).then(res => {setUser(res.data)});
+          } catch (err) {
+            
+          }
+        } else {
+          
+        }
+      }
+
+      useEffect(()=>{
+        handleUser();
+      },[])
+
+
      const [sideDrawerOpen, setOpen] = useState(false);
 
      const handleSideClose = () => setOpen(false);
@@ -17,6 +58,7 @@ export default function PerfilUsuario() {
   if (sideDrawerOpen) {
     backdrop = <Backdrop click={handleSideClose} />
   }
+
 
     return (
                 <div className="line">
@@ -31,9 +73,9 @@ export default function PerfilUsuario() {
                 <div className="text-flex2">
                   <img src={UserWhite}/>
                   <div className="dados">
-                    <h1>Hiago Maitan</h1>
-                    <h2>Tel: (00)00000-0000</h2>
-                    <h2>email: hiago@gmail.com</h2>
+                    <h1>{user.Name}</h1>
+                    <h2>{user.Phone}</h2>
+                    <h2>{user.Email}</h2>
                     
                   </div>   
                 </div>
