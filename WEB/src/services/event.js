@@ -6,4 +6,9 @@ const eventList = axios.create({
     baseURL:'https://eventech.outsystemscloud.com/Core/rest/Event/v2/events'
 });
 
-export {event, eventList};
+const update = ({ eventId }) => axios.create({
+    baseURL:`https://eventech.outsystemscloud.com/Core/rest/Event/v1/${eventId}`
+
+})
+
+export {event, eventList, update};

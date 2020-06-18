@@ -15,16 +15,11 @@ export default function PerfilEmpresa(){
         {
             Id: 0,
             Name: "",
-            Password: "",
-            Email: "",
             About: "",
-            CNPJ: "",
             Phone: "",
-            Creation_Date: "",
-            Is_Active: true,
             SocialReason: "",
             FantasyName: "",
-            HasPermissionAPI: true
+            TotalEvents: 0
           }
     );
 
@@ -90,7 +85,7 @@ export default function PerfilEmpresa(){
     </div>
 
     <div class="text-flex">
-        <h3>DASHBORD</h3>
+        <h3>DASHBOARD</h3>
     </div>
 
     <div class="flex">
@@ -99,7 +94,7 @@ export default function PerfilEmpresa(){
             <div class="hist1">
                 <h6 className="gambs">.</h6>
                 <span>Total de eventos:</span>
-                <h3>0</h3>
+  <h3>{company.TotalEvents}</h3>
             </div>
         </div>
 

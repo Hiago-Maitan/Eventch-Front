@@ -1,34 +1,20 @@
-import React, { useState } from 'react';
-//import logo from './logo.svg';
-//import ImageUploader from 'react-images-upload';
+import React,{useState} from 'react';
+
 import { Button, Form, FormGroup, Label, Input, FormText, Select } from 'reactstrap';
 import { Col, Row, } from 'reactstrap';
-import './styles.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Dropdown from 'react-bootstrap/Dropdown'
-// import ImageUploader from 'react-images-upload';
 
+// import { Container } from './styles';
 
-//toolbar import
-import Backdrop from '../../components/Backdrop/Backdrop'
-import Toolbar from '../../components/Toolbar/Toolbar'
-import SideDrawer from '../../components/SideDrawer/SideDrawer'
+function Sobre({change}) {
 
-import { FiUser, FiLogIn } from 'react-icons/fi'
-import { useHistory, Link } from 'react-router-dom';
-
-import regEventoAPI from '../../services/regEventoAPI';
-import regCategoriaAPI from '../../services/regCategoriaAPI';
-
-function RegistrarEvento() {
-
-  //config do evento
+    //config do evento
   const [name, setName] = useState('');
   const [initialDate, setInitialDate] = useState('');
   const [finalDate, setFinalDate] = useState('');
   const [initialHour, setInitialHour] = useState('');
   const [finalHour, setFinalHour] = useState('');
-  const [categoryId, setCategoryId] = useState('');
+  const [categoryId, setCategoryId] = useState(0);
   const [description, setDescription] = useState('');
   // categoria
   const category = [
@@ -37,54 +23,17 @@ function RegistrarEvento() {
     { value: 3, name: 'Palestra' },
   ];
 
-  const history = useHistory();
-
-  async function handleRegister(e) {
-    e.preventDefault();
-
-    const data = {
-      name,
-      initialDate: initialDate+'T'+initialHour+'Z',
-      finalDate: finalDate+'T'+finalHour+'Z',
-      categoryId,
-      description,
-    };
-
-    console.log(data);
-
-    try {
-      let id;
-
-      const response = await regEventoAPI.post('#', data).then(res => id = res.data);
-
-      history.push('/detalhes/'+id);
-    } catch (err) {
-      alert('Erro no cadastro, tente novamente.');
-    }
+  function submitData(){
+      change({
+        name,
+        initialDate: initialDate+'T'+initialHour+'Z',
+        finalDate: finalDate+'T'+finalHour+'Z',
+        categoryId,
+        description,
+      });
   }
 
-  //Responsividade da Toolbar
-
-  const [sideDrawerOpen, setOpen] = useState(false);
-
-  const handleSideClose = () => setOpen(false);
-  const handleSideOpen = () => setOpen(true);
-
-  let backdrop;
-
-  if (sideDrawerOpen) {
-    backdrop = <Backdrop click={handleSideClose} />
-  }
-
-  return (
-
-    <div >
-      <Toolbar handleSideOpen={handleSideOpen} />
-      <SideDrawer show={sideDrawerOpen} />
-      {backdrop}
-
-      <Form onSubmit={handleRegister}>
-
+  return <Form onSubmit={()=>submitData()}>
 
         <div className="container">
           <Row form>
@@ -254,10 +203,7 @@ function RegistrarEvento() {
           </div>
         </div>
 
-      </Form>
-    </div>
-  );
+      </Form>;
 }
 
-
-export default RegistrarEvento;
+export default Sobre;

@@ -42,7 +42,7 @@ export default function Logon() {
       localStorage.setItem('expirationDate',expiration_date);
       localStorage.setItem('Username',username);
       localStorage.setItem('userId',user_id);
-      localStorage.setItem('isCompany',is_company);
+      localStorage.setItem('is_company',is_company);
 
       history.push('/');
       

@@ -166,7 +166,7 @@ const Evento = (props) => {
         <div className="company-info">
           <div className="company-content">
             <img src={companyLogo} />
-            <h1>{eventInfo.CreatedBy.Name}</h1>
+            <h1>{eventInfo.CreatedBy.SocialReason}</h1>
             <p>{eventInfo.CreatedBy.About}</p>
           </div>
         </div>
@@ -201,64 +201,6 @@ const Evento = (props) => {
         </div>
 
       </div>
-      {/*<div className="content">
-
-          <div className="one">
-            <section>
-              <h1>{eventInfo.Name}</h1>
-  <h2> <FiNavigation2 className="" size={20} color="#1ABC9C" />{}</h2>
-              <h2> <FiCalendar className="" size={20} color="#1ABC9C" /> {eventInfo.InitialDate} - {eventInfo.FinalDate} </h2>
-
-              <p>{eventInfo.Description}</p>
-
-            </section>
-          </div>
-
-          <div className="container-logo">
-            <div className="logo-evento">
-
-              <h2>{eventInfo.CreatedBy.Name}</h2>
-
-              <p>{eventInfo.CreatedBy.About}</p>
-            </div>
-          </div>
-
-          <div className="carousel">
-
-            <style>
-              {
-                `.custom-tag {
-              max-width: 100%;
-              height: 500px;
-              background: black;
-            }`
-              }
-            </style>
-
-            <Carousel
-              activeIndex={activeIndex}
-              next={next}
-              previous={previous}
-            >
-              <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={goToIndex} />
-              {slides}
-              <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
-              <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
-            </Carousel>
-          </div>
-
-
-          <div className="border-btnIngresso">
-
-            <div>
-              <button type="button" className="button btnIngresso">Reservar Ingresso</button>
-            </div>
-
-          </div>
-
-
-        </div>
-            */}
     </>
   );
 }

@@ -14,6 +14,8 @@ import RegisterEvent from './pages/RegisterEvent';
 import RegistroUsuario from './pages/RegistroUsuario';
 import RegistroEmpresa from './pages/RegistroEmpresa';
 
+import RegistroEvento from './pages/RegistroEvento';
+
 import LogonUser from './pages/LogonUser';
 
 import PerfilUsuario from './pages/PerfilUsuario';
@@ -37,7 +39,9 @@ export default function Routes() {
 
         <Route path="/ingressos" component={Ingressos} />
 
-        <Route path="/detalhes" component={Detalhes} />
+        <Route path="/registroEvento" component={RegistroEvento} />
+
+        <PrivateRoute path="/detalhes/:id" component={Detalhes} />
 
         <PrivateRoute path="/registerEvent" component={RegisterEvent} />
 
