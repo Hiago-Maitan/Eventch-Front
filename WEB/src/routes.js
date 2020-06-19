@@ -39,7 +39,7 @@ export default function Routes() {
 
         <Route path="/ingressos" component={Ingressos} />
 
-        <Route path="/registroEvento" component={RegistroEvento} />
+        <PrivateRoute path="/registroEvento" component={RegistroEvento} />
 
         <PrivateRoute path="/detalhes/:id" component={Detalhes} />
 

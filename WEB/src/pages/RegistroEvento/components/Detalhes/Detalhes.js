@@ -9,7 +9,11 @@ import { create } from '../../../../services/place'
 //api do viacep
 import viacep from '../../../../services/viacep'
 
-function Detalhes({change}) {
+//componentes
+import Sections from '../Sections/Sections'
+
+function Detalhes({change, index}) {
+  console.log(index);
     //lugar
   const [lugar,setLugar] = useState('');
   const [descricao, setDescricao] = useState('');
@@ -52,22 +56,26 @@ function Detalhes({change}) {
       };
 
   return <Form onSubmit={()=>{submitData()}}>
-  <div className="container">
+  <div className="form-container">
+
     <Row form>
-      <Col md={2}></Col>
-
-      <Col md={9}>
+      <Col md={8}>
         <FormGroup>
+          <h2 className="form-header">Conte mais sobre o ambiente</h2>
+        </FormGroup>   
+      </Col>
+      <Sections section={index}/>
+    </Row>
 
-          <h2 className="form-header">Faça seu cadastro</h2>
-
-          <h4>6 - Onde vai acontecer o evento?</h4>
-
-          <br></br>
-
-          <div>
+    <Row form>
+              <Col md={1}></Col>
+              <Col md={7}>
+                <div className="sub-title">6 - Qual é o lugar?</div>
+              </Col>
+            </Row>
             <Row form>
-            <Col sm={2}>
+            <Col md={1}></Col>
+            <Col md={5}>
                 <FormGroup>
                   <h5>Nome do lugar: <span style={color}>*</span></h5>
                   <Input type="text"
@@ -79,18 +87,25 @@ function Detalhes({change}) {
                   />
                 </FormGroup>
               </Col>
-              <Col sm={2}>
+            </Row>
+            <Row form>
+              <Col md={1}></Col>
+              <Col sm={6}>
               <FormGroup>
                   <h5>Descrição: <span style={color}>*</span></h5>
-                  <Input type="text"
-                    name="lugar"
-                    id="lugar"
+                  <Input
+                    type="textarea"
+                    name="text"
+                    id="exampleText"
                     value={descricao}
                     onChange={e => setDescricao(e.target.value)}
                     required
                   />
                 </FormGroup>
               </Col>
+              </Row>
+              <Row form>
+              <Col md={1}></Col>
               <Col sm={2}>
               <FormGroup>
                   <h5>Capacidade: <span style={color}>*</span></h5>
@@ -103,6 +118,16 @@ function Detalhes({change}) {
                   />
                 </FormGroup>
               </Col>
+              
+              </Row>
+              <Row form>
+              <Col md={1}></Col>
+              <Col md={7}>
+                <div className="sub-title">7 - Onde fica?</div>
+              </Col>
+            </Row>
+              <Row form>
+              <Col md={1}></Col>
               <Col sm={2}>
                 <FormGroup>
                   <h5>CEP: <span style={color}>*</span></h5>
@@ -116,38 +141,9 @@ function Detalhes({change}) {
                   />
                 </FormGroup>
               </Col>
-
-              <Col sm={5}>
-                <FormGroup>
-                  <h5>Bairro: <span style={color}>*</span></h5>
-                  <Input type="text"
-                    name="bairro"
-                    id="bairro"
-                    value={bairro}
-                    onChange={e => setBairro(e.target.value)}
-                    
-                  />
-                </FormGroup>
-              </Col>
-
-              <Col sm={1}>
-                <FormGroup>
-                  <h5>UF: <span style={color}>*</span></h5>
-                  <Input type="text"
-                    name="uf"
-                    id="uf"
-                    value={uf}
-                    onChange={e => setUF(e.target.value)}
-                  />
-                </FormGroup>
-              </Col>
-
-            </Row>
-
-            <Row form>
               <Col sm={3}>
-                <FormGroup>
-                  <h5>Logadouro: <span style={color}>*</span></h5>
+              <FormGroup>
+                  <h5>Rua: <span style={color}>*</span></h5>
                   <Input type="text"
                     name="logradouro"
                     id="logradouro"
@@ -155,9 +151,36 @@ function Detalhes({change}) {
                     onChange={e => setLogradouro(e.target.value)}
                   />
                 </FormGroup>
-              </Col>
 
-              <Col sm={5}>
+              </Col>
+              <Col sm={3}>
+              <FormGroup>
+                  <h5>Bairro: <span style={color}>*</span></h5>
+                  <Input type="text"
+                    name="bairro"
+                    id="bairro"
+                    value={bairro}
+                    onChange={e => setBairro(e.target.value)}
+                  />
+                </FormGroup>
+                
+              </Col>
+              </Row>
+              <Row form>
+              <Col md={1}></Col>
+              <Col sm={2}>
+              <FormGroup>
+                  <h5>Número: <span style={color}>*</span></h5>
+                  <Input type="number"
+                    name="numero"
+                    id="numero"
+                    value={numero}
+                    onChange={e => setNumero(e.target.value)}
+                  />
+                </FormGroup>
+              
+              </Col>
+              <Col sm={4}>
                 <FormGroup>
                   <h5>Cidade: <span style={color}>*</span></h5>
                   <Input type="text"
@@ -168,20 +191,21 @@ function Detalhes({change}) {
                   />
                 </FormGroup>
               </Col>
-
               <Col sm={2}>
-                <FormGroup>
-                  <h5>Número: <span style={color}>*</span></h5>
-                  <Input type="number"
-                    name="numero"
-                    id="numero"
-                    value={numero}
-                    onChange={e => setNumero(e.target.value)}
+              <FormGroup>
+                  <h5>UF: <span style={color}>*</span></h5>
+                  <Input type="text"
+                    name="uf"
+                    id="uf"
+                    value={uf}
+                    onChange={e => setUF(e.target.value)}
                   />
                 </FormGroup>
               </Col>
-
-              <Col sm={10}>
+              </Row>
+              <Row form>
+              <Col md={1}></Col>
+              <Col sm={6}>
                 <FormGroup>
                   <h5>Complemento: <span style={color}>*</span></h5>
                   <Input type="text"
@@ -192,8 +216,8 @@ function Detalhes({change}) {
                   />
                 </FormGroup>
               </Col>
-            </Row>
-          </div>
+              </Row>
+
           <Row form>
             <Col md={9}></Col>
             <Col md={2}>
@@ -201,10 +225,7 @@ function Detalhes({change}) {
               
             </Col>
           </Row>
-        </FormGroup>
-      </Col>
-    </Row>
-  </div>
+          </div>
 </Form>;
 }
 

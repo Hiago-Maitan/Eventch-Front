@@ -29,7 +29,8 @@ import {
 const items = [
   {
     id: 1,
-    caption: 'Slide 1'
+    caption: 'Slide 1',
+    src:'https://agenciamoll.com.br/wp-content/uploads/2019/12/O-que-%C3%A9-URL-e-como-ela-Ajuda-na-sua-Estrat%C3%A9gia-Digital.jpg'
   },
   {
     id: 2,

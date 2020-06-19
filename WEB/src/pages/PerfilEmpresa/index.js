@@ -20,7 +20,7 @@ export default function PerfilEmpresa(){
             SocialReason: "",
             FantasyName: "",
             TotalEvents: 0
-          }
+        }
     );
 
     let companyId = localStorage.getItem('userId');

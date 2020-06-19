@@ -17,7 +17,7 @@ import SideDrawer from '../../components/SideDrawer/SideDrawer'
 import { FiUser, FiLogIn } from 'react-icons/fi'
 import { useHistory, Link } from 'react-router-dom';
 
-import regEventoAPI from '../../services/regEventoAPI';
+import {create} from '../../services/event';
 import regCategoriaAPI from '../../services/regCategoriaAPI';
 
 function RegistrarEvento() {
@@ -55,7 +55,7 @@ function RegistrarEvento() {
     try {
       let id;
 
-      const response = await regEventoAPI.post('#', data).then(res => id = res.data);
+      const response = await create.post('#', data).then(res => id = res.data);
 
       history.push('/detalhes/'+id);
     } catch (err) {

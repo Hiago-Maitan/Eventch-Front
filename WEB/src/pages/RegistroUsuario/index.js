@@ -86,7 +86,7 @@ export default function RegistroUsuario() {
         <Form onSubmit={handleRegister}>
 
 
-          <div className="container01">
+          <div className="form-container">
             <Row form>
               <Col md={9}>
                 <FormGroup>
@@ -193,6 +193,7 @@ export default function RegistroUsuario() {
                     placeholder="000.000.000-00"
                     value={cpf}
                     onChange={e => setCpf(e.target.value)}
+                    style={{width: 145+'px'}}
                     required
                   />
                 </FormGroup>
@@ -215,6 +216,7 @@ export default function RegistroUsuario() {
                     placeholder="(00)90000-0000"
                     value={phone}
                     onChange={e => setPhone(e.target.value)}
+                    style={{width: 145+'px'}}
                     required
                   />
                 </FormGroup>
@@ -277,6 +279,8 @@ export default function RegistroUsuario() {
                 </FormGroup> </Col>
             </Row>
 
+            <br/><br/>
+
 
             <div>
               <Row form>
@@ -286,6 +290,7 @@ export default function RegistroUsuario() {
                   <button className="button" type="submit">Continuar</button>
                 </Col>
               </Row>
+              <br/><br/>
             </div>
           </div>
 

@@ -4,10 +4,14 @@ import { Button, Form, FormGroup, Label, Input, FormText, Select } from 'reactst
 import { Col, Row, } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+//componentes
+import Sections from '../Sections/Sections'
+
 // import { Container } from './styles';
 
-function Sobre({change}) {
+function Sobre({change, index}) {
 
+  console.log(index);
     //config do evento
   const [name, setName] = useState('');
   const [initialDate, setInitialDate] = useState('');
@@ -35,18 +39,14 @@ function Sobre({change}) {
 
   return <Form onSubmit={()=>submitData()}>
 
-        <div className="container">
+        <div className="form-container">
           <Row form>
-            <Col md={2}></Col>
-
-
-            <Col md={9}>
+            <Col md={8}>
               <FormGroup>
-                <br></br>
-                <h2>VAMOS CRIAR O SEU EVENTO</h2>
-                <br></br>
+                <h2 className="form-header">VAMOS CRIAR O SEU EVENTO</h2>
               </FormGroup>
             </Col>
+            <Sections section={index}/>
           </Row>
 
           <Row form>
@@ -91,6 +91,7 @@ function Sobre({change}) {
                 />
               </FormGroup>
             </Col>
+            
 
             <Col md={2}>
               <FormGroup>
