@@ -10,6 +10,7 @@
     margin-bottom: 20px;
     /*border: 1px solid black;*/
     box-shadow: rgba(0, 0, 0, 0.50) 1px 1px 4px 4px;
+    font-family: 'Open Sans',sans-serif;
 }
 
 .form-control{

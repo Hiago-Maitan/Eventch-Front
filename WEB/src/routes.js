@@ -14,15 +14,14 @@ import RegisterEvent from './pages/RegisterEvent';
 import RegistroUsuario from './pages/RegistroUsuario';
 import RegistroEmpresa from './pages/RegistroEmpresa';
 
+import RegistroEvento from './pages/RegistroEvento';
+
 import LogonUser from './pages/LogonUser';
 
 import PerfilUsuario from './pages/PerfilUsuario';
 import PerfilEmpresa from './pages/PerfilEmpresa';
 
-
 export default function Routes() {
-
-
 
   return (
     <BrowserRouter>
@@ -30,7 +29,7 @@ export default function Routes() {
 
         <Route path="/" exact component={Home} />
 
-        <Route path="/evento" component={Evento} />
+        <Route path="/evento/:id" component={Evento} />
 
         <Route path="/login" component={LogonUser} />
 
@@ -40,14 +39,15 @@ export default function Routes() {
 
         <Route path="/ingressos" component={Ingressos} />
 
-        <Route path="/detalhes" component={Detalhes} />
+        <PrivateRoute path="/registroEvento" component={RegistroEvento} />
+
+        <PrivateRoute path="/detalhes/:id" component={Detalhes} />
 
         <PrivateRoute path="/registerEvent" component={RegisterEvent} />
 
         <PrivateRoute path="/perfilUsuario" component={PerfilUsuario} />
 
         <PrivateRoute path="/perfilEmpresa" component={PerfilEmpresa} />
-
 
       </Switch>
     </BrowserRouter>

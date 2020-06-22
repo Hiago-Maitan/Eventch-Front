@@ -1,29 +1,29 @@
-import React, {useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
 import './styles.css';
 import Login from '../../components/Login/';
 
+//lista de eventos
+import List from '../../components/DynamicList/DynamicList'
+
 import Modal from 'react-bootstrap/Modal';
 import { FiUser, FiLogIn } from 'react-icons/fi'
 import { Parallax } from "react-parallax";
-import {useHistory, Link} from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import Slider from "react-slick";
 //import MultipleItems from './carosel';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import {Navbar, Nav, NavDropdown, Form, FormControl, Button} from 'react-bootstrap';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
 import { Table } from 'semantic-ui-react';
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import { MDBJumbotron, MDBBtn, MDBContainer, MDBRow, MDBCol, MDBCardTitle, MDBIcon } from "mdbreact";
 import Toolbar from '../../components/Toolbar/Toolbar'
 import SideDrawer from '../../components/SideDrawer/SideDrawer';
 import Backdrop from '../../components/Backdrop/Backdrop'
-
-
 import "bootstrap/dist/css/bootstrap.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
 
 
 
@@ -93,20 +93,12 @@ const insideStyles = {
   "https://brightcove04pmdo-a.akamaihd.net/5104226627001/5104226627001_5297440765001_5280261645001-vs.jpg?pubId=5104226627001&videoId=5280261645001";
   
 
-export default function Home(){
 
+export default function Home() {
 
-  
-
-
-   const color = {
+  const color = {
     color: '#1ABC9C'
   };
-
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
   //Responsividade da Toolbar
 
@@ -121,51 +113,13 @@ export default function Home(){
     backdrop = <Backdrop click={handleSideClose} />
   }
 
+ 
 
 
-  //////////////carousel//////////////
-  const [suggestions,setSuggestions]=useState([])
+  return (
+    <div>
 
-
-  useEffect(()=>{
-fetch('https://jsonplaceholder.typicode.com/users').then(res=>res.json()).then(data=>{
-  setSuggestions(data);
-})
-  });
-
-  let settings = {
-    infinite: false,
-    speed: 1000,
-    arrows:true,
-    slidesToShow: 3,
-    slidesToScroll: 3,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
-
-    responsive: [
-      {
-        breakpoint: 1500,//960
-        settings: {
-            slidesToShow: 4,
-            slidesToScroll: 2
-        }
-    },
-    {
-        breakpoint: 480,
-        settings: {
-            slidesToShow: 1,
-            slidesToScroll: 2
-        }
-    }
-  ]
-  }
-///////////////////////////////////
-
-
-    return (
-<div> 
-
-    <div style={styles}>
+<div style={styles}>
     <Parallax     bgImage={require('../../Image/conference.jpg')} strength={300} >
 
 <h1 className="blocktexth1" height={0}>Não procure por eventos, a eventech fará isso por você.</h1>
@@ -175,8 +129,12 @@ fetch('https://jsonplaceholder.typicode.com/users').then(res=>res.json()).then(d
     </Parallax>
 
 
+
+
+
+
 	
-<div>
+    <div>
 <div className="teste">
 
 
@@ -201,38 +159,13 @@ fetch('https://jsonplaceholder.typicode.com/users').then(res=>res.json()).then(d
 }
 
 
-<div className="teste" >
-<div className="container"    >
-            {suggestions.length===0?(
-                <div className="spinner-border" role="status">
-                    <span className="sr-only">Loading...</span>
-                </div>
-            ):(
-                <Slider {...settings}>
-                {suggestions.map(current=>(
-                        <div className="out" key={current.id}>
-                          <br></br>
-                            <div className="card">
-                                <img className="rounded" alt={"users here"} src={`https://source.unsplash.com/random/${current.id}`} id="half-size-carousel" />
-                                <div className="card-body">
-                                    <h5 className="card-title">{current.username}</h5>
-                                    <small className="card-text text-sm-center text-muted">Evento disponível</small>
-                                    <br/>{/* 
-                                    <button className="btn btn-sm follow btn-primary">Entrar</button>
 
-                                    */}
-                                </div>
-                            </div>
-                            
-                        </div>
-                    ))}
-                </Slider>
-            )}
+<br></br>
+<div className="teste">
+<div className="list-placeholder">
+          <List/>
         </div>
 </div>
-<br></br>
-
-
 
 <div className="cabecalho"> 
 <h1 className="ladoT">Proposta Eventech  </h1>
@@ -285,7 +218,6 @@ Com o acirramento da concorrência e o aumento da
 
 </div>
 
-</div>
 <div className="teste">
   <br></br>
 </div>
@@ -364,71 +296,22 @@ Com o acirramento da concorrência e o aumento da
 
 
 
-<div className="line">
-            
 
 
-            <Toolbar handleSideOpen={handleSideOpen}/>
-            <SideDrawer show={sideDrawerOpen}/>
-            {backdrop}
-            
-            {/* 
-        <div className="navbar">
-                      <Link className="logo" to="/"></Link>
-        
-                        <div className="dropdown dropOne">
-                         <button className="dropbtn">Eventos </button>
-        
-                           <div className="dropdown-content">
-                              <a href="#">Publicar Evento</a>
-                              <a href="#">Em Destaque</a>
-                            </div>
-                        </div>
-        
-                        <div className="dropdown dropTwo">
-                            <button className="dropbtn">Sobre Nós </button>
-        
-                            <div className="dropdown-content">
-                              <a href="#">Projeto</a>
-                              <a href="#">Quem Somos</a>
-                            </div>
-                        </div>
-                                
-                            <div className="dropdown dropOne">
-        
-                             <Link className="user" onClick={handleShow}>
-                                <FiUser size={40} color="#1ABC9C" />
-                                   Login
-                              </Link>
-        
-                              
-                            </div>
-                    </div>
-                    */}
-         <>
-              <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                  <Modal.Title style={color}>Faça seu Login</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-        
-                <Login/>
-        
-                
-                </Modal.Body>
-                <Modal.Footer>
-                 
-                </Modal.Footer>
-              </Modal>
-            </>
-        
-            </div>
+        <Toolbar handleSideOpen={handleSideOpen} />
+        <SideDrawer show={sideDrawerOpen} />
+        {backdrop}
+
+       
+
+      </div>
 
 
-</div>
+
+    </div>
 
 
 
 
-		)
+  )
 }

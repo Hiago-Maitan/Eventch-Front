@@ -12,6 +12,7 @@ import { FiUser, FiLogIn } from 'react-icons/fi'
 import { useHistory, Link } from 'react-router-dom';
 
 import { register } from '../../services/user';
+import regUsuario from '../../services/api';
 
 //toolbar import
 import Backdrop from '../../components/Backdrop/Backdrop'
@@ -192,6 +193,7 @@ export default function RegistroUsuario() {
                     placeholder="000.000.000-00"
                     value={cpf}
                     onChange={e => setCpf(e.target.value)}
+                    style={{width: 145+'px'}}
                     required
                   />
                 </FormGroup>
@@ -212,6 +214,7 @@ export default function RegistroUsuario() {
                     placeholder="(00)90000-0000"
                     value={phone}
                     onChange={e => setPhone(e.target.value)}
+                    style={{width: 145+'px'}}
                     required
                   />
                 </FormGroup>
@@ -242,6 +245,8 @@ export default function RegistroUsuario() {
                     type="email"
                     name="email"
                     id="email"
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
                     placeholder=""
                     required
                   />
@@ -259,6 +264,8 @@ export default function RegistroUsuario() {
                     type="password"
                     name="password"
                     id="password"
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}
                     placeholder="*********"
                     required
                   />
@@ -278,6 +285,8 @@ export default function RegistroUsuario() {
                 </FormGroup> </Col>
             </Row>
 
+            <br/><br/>
+
 
             <div>
               <Row form>
@@ -287,6 +296,7 @@ export default function RegistroUsuario() {
                   <button className="button" type="submit">Continuar</button>
                 </Col>
               </Row>
+              <br/><br/>
             </div>
 
 
@@ -301,8 +311,3 @@ export default function RegistroUsuario() {
     </>
   );
 }
-
-
-
-
-

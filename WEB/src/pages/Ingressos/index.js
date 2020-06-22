@@ -1,103 +1,97 @@
 import React, {useState} from 'react';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-import { Col, Row,} from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormText, Col, Row, Collapse } from 'reactstrap';
 import './styles.css';
 import Dropdown from 'react-bootstrap/Dropdown';
-import ImageUploader from 'react-images-upload';
 
 import Modal from 'react-bootstrap/Modal';
 
 import { FiUser, FiLogIn } from 'react-icons/fi'
 import {useHistory, Link} from 'react-router-dom';
 
-class Ingressos extends React.Component{
+import regIngressosAPI from '../../services/regIngressosAPI';
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      file: '',
-      imagePreviewUrl: ''
+
+//toolbar import
+import Backdrop from '../../components/Backdrop/Backdrop'
+import Toolbar from '../../components/Toolbar/Toolbar'
+import SideDrawer from '../../components/SideDrawer/SideDrawer'
+
+
+function Ingresso(){
+
+  const [name, setName] = useState('');
+  const [initialDate, setinItialDate] = useState('');
+  const [finalDate, setFinalDate] = useState('');
+  const [qtd, setQtd] = useState('');
+  const [qtdPerPerson, setQtdPerPerson] = useState('');
+  const [isPayment, setIsPayment] = useState('true');
+  const [price, setPrice] = useState('');
+
+   const history = useHistory();
+
+    async function handleRegister(e){
+    e.preventDefault();
+
+  const data= {
+      name,
+      initialDate,
+      finalDate,
+      qtd,
+      qtdPerPerson,
+      isPayment,
+      price,
     };
-    this._handleImageChange = this._handleImageChange.bind(this);
-    this._handleSubmit = this._handleSubmit.bind(this);
-  }
 
-  _handleSubmit(e) {
-    e.preventDefault();
-    // TODO: do something with -> this.state.file
-  }
+    try{
+      const response = await regIngressosAPI.post('TicketJPA',data);
+      
+      alert(`Cadastro feito !`);
 
-  _handleImageChange(e) {
-    e.preventDefault();
-
-    let reader = new FileReader();
-    let file = e.target.files[0];
-
-    reader.onloadend = () => {
-      this.setState({
-        file: file,
-        imagePreviewUrl: reader.result
-      });
+      history.push('/');
+    } catch (err) {
+      alert('Erro no cadastro, tente novamente.');
     }
-
-    reader.readAsDataURL(file)
   }
 
-  render() {
-    let {imagePreviewUrl} = this.state;
-    let $imagePreview = null;
-    if (imagePreviewUrl) {
-      $imagePreview = (<img src={imagePreviewUrl} />);
-    }
+  const [isOpen, setIsOpen] = useState(false);
+  const [isClose, setClose] = useState(true);
+
+
+  const open = () => setIsOpen(isClose);
+  const close = () => setIsOpen(!isClose);
+
+
 
   const color = {
     color: 'red'
   };
 
-    return (
+  
+ //Responsividade da Toolbar
 
-      <div className="line">
-            <div className="navbar">
+ const [sideDrawerOpen, setOpen] = useState(false);
 
-              <Link className="logo" to="/"></Link>
+ const handleSideClose = () => setOpen(false);
+ const handleSideOpen = () => setOpen(true);
 
-                <div className="dropdown dropOne">
-                 <button className="dropbtn">Eventos </button>
+ let backdrop;
 
-                   <div className="dropdown-content">
-                      <a href="#">Publicar Evento</a>
-                      <a href="#">Em Destaque</a>
-                    </div>
-                </div>
+ if (sideDrawerOpen) {
+   backdrop = <Backdrop click={handleSideClose} />
+ }
 
-                <div className="dropdown dropTwo">
-                    <button className="dropbtn">Sobre Nós </button>
+return (
+ 
 
-                    <div className="dropdown-content">
-                      <a href="#">Projeto</a>
-                      <a href="#">Quem Somos</a>
-                    </div>
-                </div>
-                        
-                    <div className="dropdown dropOne">
 
-                      <Link className="user" to="/login">
-                        <FiUser size={40} color="#1ABC9C" />
-                           Login
-                      </Link>
-                    </div>
-            </div>
+ <div className="margin-top">
 
-   <br></br>
-<br></br>    
-<br></br>
-<br></br>    
-<br></br>
-<br></br>           
-
-    
-
+   <Toolbar handleSideOpen={handleSideOpen} />
+   <SideDrawer show={sideDrawerOpen} />
+   {backdrop}
+       
 <div>
+<Form onSubmit={handleRegister}>
 
 <div className="container01">
 <Row form>
@@ -110,7 +104,7 @@ class Ingressos extends React.Component{
         <FormGroup>
 
 
-<h2>Crie o seu ingresso</h2>
+<h2 className="form-header">Crie o seu ingresso</h2>
 <br></br>
 
 <div>
@@ -121,7 +115,15 @@ class Ingressos extends React.Component{
 <Col md={5}>
 <FormGroup>
         <h5>Nome do ingresso: <span style={color}>*</span></h5>
-        <Input type="name" name="name" id="nameTik" placeholder="" />
+        <Input 
+        type="name" 
+        name="name" 
+        id="nameTik" 
+        placeholder=""
+        value={name}
+        onChange={e => setName(e.target.value)}
+        required  
+        />
 </FormGroup>
 </Col>
 </Row>
@@ -138,6 +140,9 @@ class Ingressos extends React.Component{
           name="dataInicio"
           id="exampleDate"
           placeholder="date placeholder"
+          value={initialDate}
+          onChange={e => setinItialDate(e.target.value)}
+          required
         />  
       </FormGroup>
 </Col>
@@ -150,6 +155,7 @@ class Ingressos extends React.Component{
           name="horaInicio"
           id="exampleTime"
           placeholder="time placeholder"
+          required
         />
       </FormGroup> </Col>
 
@@ -161,6 +167,9 @@ class Ingressos extends React.Component{
           name="dataTermino"
           id="exampleDate"
           placeholder="date placeholder"
+          value={finalDate}
+          onChange={e => setFinalDate(e.target.value)}
+          required
         />  
       </FormGroup>
 </Col>
@@ -173,6 +182,7 @@ class Ingressos extends React.Component{
           name="horaTermino"
           id="exTime"
           placeholder="time placeholder"
+          required
         />
       </FormGroup> </Col>
 </Row>
@@ -187,6 +197,9 @@ class Ingressos extends React.Component{
           name="numberIngressos"
           id="exampleNumber"
           placeholder=""
+          value={qtd}
+          onChange={e => setQtd(e.target.value)}
+          required
         />
       </FormGroup>
 </Col>
@@ -199,6 +212,9 @@ class Ingressos extends React.Component{
           name="numberPessoa"
           id="exampleNumber"
           placeholder="Não preencha se não há limite"
+          value={qtdPerPerson}
+          onChange={e => setQtdPerPerson(e.target.value)}
+          required
           />
       </FormGroup>
           </Col>
@@ -209,25 +225,39 @@ class Ingressos extends React.Component{
 <h5>Tipo de ingresso <span style={color}>*</span></h5>
 <Row form>
 
-    <Col md={2}>
-
+    <Col md={3}>
 
         <FormGroup check>
           <Label check>
-            <Input type="radio" id='pago' name="radio1" />{' '}
+            <Input 
+            type="radio" 
+            id='pago' 
+            name="radio1" 
+             onClick={open}
+            value={isPayment}
+            onChange={e => setIsPayment(e.target.value)}
+            
+            />{' '}
             Ingressos pago</Label>
         </FormGroup></Col>
 
           <Col md={3}>
         <FormGroup check>
           <Label check>
-            <Input type="radio" id='gratuito' name="radio1" />{' '}
+            <Input 
+            type="radio" 
+            id='gratuito' 
+            name="radio1"  
+            onClick={close}
+            
+            />{' '}
               Ingresso gratuito
           </Label>
         </FormGroup></Col>
 </Row>
 
 <br></br>
+<Collapse isOpen={isOpen}>
 <Row form>
 <Col md={3}>
 <FormGroup>
@@ -237,19 +267,25 @@ class Ingressos extends React.Component{
           name="number"
           id="valorIngresso"
           placeholder="00,00"
+          value={finalDate}
+          onChange={e => setFinalDate(e.target.value)}
+          value={price}
+          onChange={e => setPrice(e.target.value)}
+          
         />
       </FormGroup>
 </Col>
 </Row>
+</Collapse>
 
 <div> 
   
    <Row form>
   <Col md={9}></Col>
         <Col md={2}>  
-  <Link className="user" to="/ingressos">
+  
               <button className="button" type="submit">Continuar</button>
-             </Link>
+             
 </Col> 
   </Row>
   
@@ -263,12 +299,13 @@ class Ingressos extends React.Component{
 </Col>
 </Row>
 </div>
+</Form>
 </div>
 
 
 </div>
     )
-}
-}
-
-export default Ingressos;
+    }
+    
+    
+    export default Ingresso;

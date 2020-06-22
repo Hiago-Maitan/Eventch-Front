@@ -1,5 +1,18 @@
 import axios from 'axios'
 
-const event = ({id}) => axios.get(`https://eventech.outsystemscloud.com/Core/rest/Event/v1/${id}`);
+const event = ({eventId}) => axios.get(`https://eventech.outsystemscloud.com/Core/rest/Event/v2/${eventId}`);
 
-export default event;
+const create = axios.create({
+	baseURL: 'https://eventech.outsystemscloud.com/Core/rest/Event/v2'
+});
+
+const eventList = axios.create({
+    baseURL:'https://eventech.outsystemscloud.com/Core/rest/Event/v2/events'
+});
+
+const update = ({ eventId }) => axios.create({
+    baseURL:`https://eventech.outsystemscloud.com/Core/rest/Event/v1/${eventId}`
+
+})
+
+export {event, eventList, update, create};

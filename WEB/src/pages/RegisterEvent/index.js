@@ -1,269 +1,263 @@
-import React from 'react';
+import React, { useState } from 'react';
 //import logo from './logo.svg';
 //import ImageUploader from 'react-images-upload';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-import { Col, Row,} from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormText, Select } from 'reactstrap';
+import { Col, Row, } from 'reactstrap';
 import './styles.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Dropdown from 'react-bootstrap/Dropdown'
-import ImageUploader from 'react-images-upload';
+// import ImageUploader from 'react-images-upload';
+
+
+//toolbar import
+import Backdrop from '../../components/Backdrop/Backdrop'
+import Toolbar from '../../components/Toolbar/Toolbar'
+import SideDrawer from '../../components/SideDrawer/SideDrawer'
 
 import { FiUser, FiLogIn } from 'react-icons/fi'
-import {useHistory, Link} from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 
-  class Evento extends React.Component{
+import {create} from '../../services/event';
+import regCategoriaAPI from '../../services/regCategoriaAPI';
 
-    constructor(props) {
-      super(props);
-      this.state = {
-        file: '',
-        imagePreviewUrl: ''
-      };
-      this._handleImageChange = this._handleImageChange.bind(this);
-      this._handleSubmit = this._handleSubmit.bind(this);
+function RegistrarEvento() {
+
+  //config do evento
+  const [name, setName] = useState('');
+  const [initialDate, setInitialDate] = useState('');
+  const [finalDate, setFinalDate] = useState('');
+  const [initialHour, setInitialHour] = useState('');
+  const [finalHour, setFinalHour] = useState('');
+  const [categoryId, setCategoryId] = useState('');
+  const [description, setDescription] = useState('');
+  // categoria
+  const category = [
+    { value: 1, name: 'MeetUp' },
+    { value: 2, name: 'Workshop' },
+    { value: 3, name: 'Palestra' },
+  ];
+
+  const history = useHistory();
+
+  async function handleRegister(e) {
+    e.preventDefault();
+
+    const data = {
+      name,
+      initialDate: initialDate+'T'+initialHour+'Z',
+      finalDate: finalDate+'T'+finalHour+'Z',
+      categoryId,
+      description,
+    };
+
+    console.log(data);
+
+    try {
+      let id;
+
+      const response = await create.post('#', data).then(res => id = res.data);
+
+      history.push('/detalhes/'+id);
+    } catch (err) {
+      alert('Erro no cadastro, tente novamente.');
     }
-  
-    _handleSubmit(e) {
-      e.preventDefault();
-      // TODO: do something with -> this.state.file
-    }
-  
-    _handleImageChange(e) {
-      e.preventDefault();
-  
-      let reader = new FileReader();
-      let file = e.target.files[0];
-  
-      reader.onloadend = () => {
-        this.setState({
-          file: file,
-          imagePreviewUrl: reader.result
-        });
-      }
-  
-      reader.readAsDataURL(file)
-    }
-  
-    render() {
-      let {imagePreviewUrl} = this.state;
-      let $imagePreview = null;
-      if (imagePreviewUrl) {
-        $imagePreview = (<img src={imagePreviewUrl} />);
-      }
-    
-      return ( 
+  }
 
-        <div className="line">
-        <div className="navbar">
+  //Responsividade da Toolbar
 
-         <Link className="logo" to="/"></Link>
+  const [sideDrawerOpen, setOpen] = useState(false);
 
-           <div className="dropdown dropOne">
-            <button className="dropbtn">Eventos </button>
+  const handleSideClose = () => setOpen(false);
+  const handleSideOpen = () => setOpen(true);
 
-              <div className="dropdown-content">
-                 <a href="#">Publicar Evento</a>
-                 <a href="#">Em Destaque</a>
-               </div>
-           </div>
+  let backdrop;
 
-           <div className="dropdown dropTwo">
-               <button className="dropbtn">Sobre Nós </button>
+  if (sideDrawerOpen) {
+    backdrop = <Backdrop click={handleSideClose} />
+  }
 
-               <div className="dropdown-content">
-                 <a href="#">Projeto</a>
-                 <a href="#">Quem Somos</a>
-               </div>
-           </div>
-                   
-               <div className="dropdown dropOne">
+  return (
 
-                 <Link className="user" to="/login">
-                   <FiUser size={40} color="#1ABC9C" />
-                      Login
-                 </Link>
-               </div>
+    <div >
+      <Toolbar handleSideOpen={handleSideOpen} />
+      <SideDrawer show={sideDrawerOpen} />
+      {backdrop}
 
-       </div>
-
-<div >
-   
-
-     
-
-      <Form>   
+      <Form onSubmit={handleRegister}>
 
 
-        
-<br></br>
-<br></br>    
-<br></br>
-<br></br>    
-<br></br>
-<br></br>
+        <div className="container">
+          <Row form>
+            <Col md={2}></Col>
 
-<div className="container">
-<Row form>
-           <Col md={2}></Col>
-           
-
-<Col md={9}>
-        <FormGroup>
-    
-          <h2>Vamos criar seu evento</h2>
-          <br></br>
-        </FormGroup>
-     </Col>
-</Row>
-
-         <Row form>
-           <Col md={1}></Col>
-           
-
-<Col md={7}>
-        <FormGroup>
-          <h4>1 - Qual o nome do seu evento?</h4>
-          <br></br>
-          <h5>Nome do evento:</h5>
-          <Input type="nome" name="evento" id="nomeEvento" placeholder="" />
-          <br></br> 
-
-          <h4>2 - Quando é o evento?</h4>
-
-        </FormGroup>
-     </Col>
-</Row>
-
-<Row form>
-<Col md={1}></Col>
-      <Col md={2}>
-        <FormGroup>
-        <h5>Data ínicio:</h5>
-        <Input
-          type="date"
-          name="dataInicio"
-          id="exampleDate"
-          placeholder="date placeholder"
-          />  
-      </FormGroup>
-</Col>
-
- <Col md={2}>
-      <FormGroup>
-          <h5>Data final:</h5>
-        <Input
-          type="date"
-          name="dataTermino"
-          id="exampleDate"
-          placeholder="date placeholder"
-          />
-      </FormGroup> </Col>
-
-      <Col md={2}>
-        <FormGroup>
-        <h5>Horário ínicio:</h5>
-        <Input
-          type="time"
-          name="horaInicio"
-          id="exampleTime"
-          placeholder="time placeholder"
-          />  
-      </FormGroup>
-</Col>
- <Col md={2}>
-      <FormGroup>
-     
-        <h5>Horário final:</h5>
-        <Input
-          type="time"
-          name="horaTermino"
-          id="exTime"
-          placeholder="time placeholder"
-          />
-      </FormGroup> </Col>
-</Row>
-
-<Row form>
-           <Col md={1}></Col>
-           
-
-<Col md={9}>
-        <FormGroup>
-         
-      <div>
-        <br></br>
-       <h4>3 - Qual categoria o seu evento se encaixa?</h4>
-<br></br>
-
-  <FormGroup row>
-
-<Col sm={6}>
-<Input type="select" name="select" id="exampleSelect">
-<option>Curso</option>
-<option>WorkShops</option>
-<option>Palestra</option>
-<option>Outros</option>
-</Input>
-</Col>
-</FormGroup>
-
-<br></br>
-
-            <h4>4 - Adicione uma imagem</h4>
-               <br></br>
-            
 
             <Col md={9}>
-          <form onSubmit={this._handleSubmit}>
-            <input md={9} type="file" onChange={this._handleImageChange} />
-          </form>
-          {$imagePreview}</Col> 
-          <br></br>
-          <br></br>
-          
-  </div>
+              <FormGroup>
+                <br></br>
+                <h2>VAMOS CRIAR O SEU EVENTO</h2>
+                <br></br>
+              </FormGroup>
+            </Col>
+          </Row>
 
-           <h4>
-              5 - Sua descrição do evento:
-            </h4>
+          <Row form>
+            <Col md={1}></Col>
+
+
+            <Col md={7}>
+              <FormGroup>
+                <h4>1 - Qual o nome do seu evento?</h4>
+                <br></br>
+                <h5>Nome do evento:</h5>
+                <Input
+                  type="text"
+                  name="evento"
+                  id="nomeEvento"
+                  placeholder="Digite aqui..."
+                  value={name}
+                  onChange={e => setName(e.target.value)}
+                  required
+                />
+                <br></br>
+
+                <h4>2 - Quando é o evento?</h4>
+
+              </FormGroup>
+            </Col>
+          </Row>
+
+          <Row form>
+            <Col md={1}></Col>
+            <Col md={2}>
+              <FormGroup>
+                <h5>Data ínicio:</h5>
+                <Input
+                  type="date"
+                  name="dataInicio"
+                  id="exampleDate"
+                  placeholder="date placeholder"
+                  value={initialDate}
+                  onChange={e => setInitialDate(e.target.value)}
+                  required
+                />
+              </FormGroup>
+            </Col>
+
+            <Col md={2}>
+              <FormGroup>
+                <h5>Horário ínicio:</h5>
+                <Input
+                  type="time"
+                  name="horaInicio"
+                  id="exampleTime"
+                  placeholder="time placeholder"
+                  value={initialHour}
+                  onChange={e => setInitialHour(e.target.value)}
+                />
+              </FormGroup>
+            </Col>
+
+            <Col md={2}>
+              <FormGroup>
+                <h5>Data final:</h5>
+                <Input
+                  type="date"
+                  name="dataTermino"
+                  id="exampleDate"
+                  placeholder="date placeholder"
+                  value={finalDate}
+                  onChange={e => setFinalDate(e.target.value)}
+                  required
+                />
+              </FormGroup> </Col>
+            <Col md={2}>
+              <FormGroup>
+
+                <h5>Horário final:</h5>
+                <Input
+                  type="time"
+                  name="horaTermino"
+                  id="exTime"
+                  placeholder="time placeholder"
+                  value={finalHour}
+                  onChange={e => setFinalHour(e.target.value)}
+                />
+              </FormGroup> </Col>
+          </Row>
+
+          <Row form>
+            <Col md={1}></Col>
+
+
+            <Col md={9}>
+              <FormGroup>
+
+                <div>
+                  <br></br>
+                  <h4>3 - Qual categoria o seu evento se encaixa?</h4>
+                  <br></br>
+
+                  <FormGroup row>
+
+                    <Col sm={6}>
+
+                      <Input type="select" name="select" id="exampleSelect" value={categoryId} onChange={e => setCategoryId(e.target.value)}>
+                        {category.map((item, index) => (
+                          <option value={item.value}>{item.name}</option>
+                        ))}
+                      </Input>
+
+
+                    </Col>
+                  </FormGroup>
+
+                  <br></br>
+                  <Col md={9}></Col>
+                </div>
+
+                <h4>4 - Sua descrição do evento:</h4>
+                <br></br>
+                <FormGroup>
+                  <h5>Conte sobre o seu evento...</h5>
+                  <Input
+                    type="textarea"
+                    name="text"
+                    id="exampleText"
+                    value={description}
+                    onChange={e => setDescription(e.target.value)}
+                    required
+                  />
+                </FormGroup>
+                <br></br>
+                <br></br>
+                <br></br>
+              </FormGroup>
+            </Col>
+          </Row>
+
+          <div>
+
+            <Row form>
+              <Col md={9}></Col>
+
+              <Col md={2}>
+
+                <button className="button" type="submit">Continuar</button>
+
+              </Col>
+
+
+            </Row>
+
             <br></br>
-  <FormGroup>
-        <h5>Conte sobre o seu evento...</h5>
-        <Input type="textarea" name="text" id="exampleText" />
-      </FormGroup>
-      <br></br>
-      <br></br>
-      <br></br>    
-          </FormGroup>
-     </Col>
-</Row>
-
-  <div> 
-  
-  <Row form>
-  <Col md={9}></Col>
-    
-    <Col md={2}>  
-  <Link className="user" to="/detalhes">
-              <button className="button" type="submit">Continuar</button>
-             </Link>
-
-  
-</Col> 
-
-  
-  </Row>
-
-  <br></br> 
-  <br></br>
-   </div> 
-   </div>
+            <br></br>
+          </div>
+        </div>
 
       </Form>
-          </div>
-          </div>
-    );
-  }
-  }
+    </div>
+  );
+}
 
-export default Evento ;
+
+export default RegistrarEvento;

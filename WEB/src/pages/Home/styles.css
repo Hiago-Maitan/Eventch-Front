@@ -1,3 +1,5 @@
+@import '../../colors.css';
+
 .middle[type=text] {
     width: 50%;
     box-sizing: border-box;
@@ -12,29 +14,6 @@
     margin-left: 25%;
     /*  */
 }
-#half-size-carousel {  width: 100%;  height: 200px; } 
-
-div.teste{
-background-color: #0fc9af;
-
-}
-
-div.teste1{
-  background-color:white;
-  
-  }
-  
-
-
-h1.blocktext {
-  margin-top: 350px;
-  text-align: center;
-  color:#0fc9af;
-  font-size: 90px;
-  font-weight: bold;
-  
-}
-
 #rodape{
   width: 600px;
   padding: 10px 2%;
@@ -353,6 +332,55 @@ section{
   clear: both;
   background-color: green;
 }
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+#half-size-carousel {  width: 100%;  height: 200px; } 
+
+.list-placeholder{
+  padding: 5rem;
+}
+
+div.teste{
+background-color: #0fc9af;
+
+}
+
+div.teste1{
+  background-color:white;
+  
+  }
+  
+
+
+h1.blocktext {
+  margin-top: 350px;
+  text-align: center;
+  color:#0fc9af;
+  font-size: 90px;
+
+  color: var(--secondary-color);
+  font-size: 65px;
+  font-weight: bold;
+  
+}
+
+
+
 
 
 

@@ -27,16 +27,22 @@ export default function Logon() {
       let expiration_date;
       let is_authenticated;
       let username;
+      let user_id;
+      let is_company;
 
       const response = await login({email,password}).then( res => {
         expiration_date = res.data.expiration_date;
         is_authenticated = res.data.is_authenticated;
         username = res.data.username;
+        user_id = res.data.user_id;
+        is_company = res.data.is_company;
       });
 
       localStorage.setItem('isAuthenticated',is_authenticated);
       localStorage.setItem('expirationDate',expiration_date);
       localStorage.setItem('Username',username);
+      localStorage.setItem('userId',user_id);
+      localStorage.setItem('is_company',is_company);
 
       history.push('/');
       
@@ -65,11 +71,13 @@ export default function Logon() {
       <Toolbar handleSideOpen={handleSideOpen} />
       <SideDrawer show={sideDrawerOpen} />
       {backdrop}
+       
 
       <div className="login-container">
-        <h1>Entre com sua conta</h1>
-
+       <div className="colorContainer">
         <form onSubmit={handleLogin}>
+
+        <h1>Entre com sua conta</h1>
 
           <input type="email"
             placeholder="E-mail"
@@ -87,14 +95,15 @@ export default function Logon() {
           <button className="button" type="submit">Entrar</button>
 
           <Link className="back-link" to="/registroUsuario">
-            <FiLogIn size={16} color="#1ABC9C" />
+            <FiLogIn size={16} color="#ffff" />
                          Cadastro PF
                     </Link>
           <Link className="back-link" to="/registroEmpresa">
-            <FiLogIn size={16} color="#1ABC9C" />
+            <FiLogIn size={16} color="#ffff" />
                          Cadastro PJ
                     </Link>
         </form>
+        </div>
       </div>
     </>
   )
