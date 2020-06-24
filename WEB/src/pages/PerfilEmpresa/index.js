@@ -12,17 +12,46 @@ import {exportacao} from '../../services/event';
 //import api
 import {companyById} from '../../services/company'
 
-export default function PerfilEmpresa(){
-const [eventId, setEventId] = useState('');
+const PerfilEmpresa = (props) => {
 
-const data = {
-  eventId,
-};
+const [eventInfo, setEvent] = useState({
+    Id: 0,
+    Name: "",
+    InitialDate: "",
+    FinalDate: "",
+    PlaceId: {
+      Id: 0,
+      Name: "",
+      Description: "",
+      Capacity: 0,
+      City: "",
+      State: "",
+      ZipCode: "",
+      Street: "",
+      StreetNumber: 0
+    },
+    CreatedBy: {
+      Id: 0,
+      Name: "",
+      About: "",
+      Phone: "",
+      SocialReason: "",
+      FantasyName: ""
+    },
+    Description: "",
+    AgeRange: "",
+    Category: ""
+  });
+
+const history = useHistory();
+
+let eventId = props.match.params.id;
 
     const [company, setCompany] = useState(
         {
             Id: 0,
             Name: "",
+            Email: "",
             About: "",
             Phone: "",
             SocialReason: "",
@@ -48,10 +77,6 @@ const data = {
       useEffect(()=>{
         handleCompany();
       },[])
-
-      async function exportEvent(){
-        const response = await exportacao('Long',{eventId}).then(res => {setEventId(res.data)});
-      }
 
     const [sideDrawerOpen, setOpen] = useState(false);
 
@@ -79,7 +104,7 @@ const data = {
               <div className="dados">
               <h1>{company.FantasyName}</h1>
               <h2>{company.Phone}</h2>
-                <h2>{company.Email}</h2>
+                <h2>tivit@yahoo.com</h2>
         </div>
         </div> 
 
@@ -96,7 +121,7 @@ const data = {
     </div>
 
     <div className="text-flex">
-        <h3>DASHBOARD</h3>
+        <h3>DADOS GERAIS</h3>
     </div>
 
     <div className="flex">
@@ -126,8 +151,9 @@ const data = {
         </div>
 
     </div>
-    <button className="button" type="submit" onClick={exportEvent}>Exportação</button>
 		</div>
         </div>
 		);
 }
+
+export default PerfilEmpresa;
