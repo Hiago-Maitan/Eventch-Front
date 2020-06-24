@@ -5,6 +5,8 @@ import Toolbar from '../../components/Toolbar/Toolbar';
 import SideDrawer from '../../components/SideDrawer/SideDrawer';
 import Backdrop from '../../components/Backdrop/Backdrop';
 import UserWhite from '../../Image/user_white.png';
+import {pilha} from '../../services/event';
+import axios from 'axios';
 
 //userById
 import {userById} from '../../services/user';
@@ -29,6 +31,14 @@ export default function PerfilUsuario() {
           }
     );
 
+    const [history, setHistory] = useState(
+        {
+           nameEvent: "",
+           nameCompany: "",
+           nameCategory: "",
+        }
+    );
+
     let userId = localStorage.getItem('userId');
 
     async function handleUser(){
@@ -45,6 +55,18 @@ export default function PerfilUsuario() {
 
       useEffect(()=>{
         handleUser();
+      },[])
+
+      async function handlePilha(){
+          try {
+            const response = axios.get(`https://eventech-back.herokuapp.com/v2/historys/`).then(res => 
+            {setHistory(res.data)});
+          } catch (err) {
+          }
+      }
+
+      useEffect(()=>{
+        handlePilha();
       },[])
 
 
@@ -73,9 +95,9 @@ export default function PerfilUsuario() {
                 <div className="text-flex2">
                   <img src={UserWhite}/>
                   <div className="dados">
-                    <h1>{user.Name}</h1>
-                    <h2>{user.Phone}</h2>
-                    <h2>{user.Email}</h2>
+                    <h1>{user.Name} {user.Surname}</h1>
+                    <h2>Phone: {user.Phone}</h2>
+                    <h2>E-mail: {user.Email}</h2>
                     
                   </div>   
                 </div>
@@ -89,9 +111,9 @@ export default function PerfilUsuario() {
 
             <div className="container-historico">
                 <div className="hist1">
-                    <h5 className="nome-evento"><b>Técnicas de UX</b></h5>
-                    <h5 className="empresa">Stefaninni</h5>
-                    <h5 className="categoria">Palestra</h5>
+                    <h5 className="nome-evento"><b>{history.nameEvent}</b></h5>
+                    <h5 className="empresa">{history.nameCompany}</h5>
+                    <h5 className="categoria">{history.nameCategory}</h5>
                 </div>
             </div>
 
