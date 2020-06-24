@@ -4,6 +4,7 @@ import { useHistory, Link } from 'react-router-dom';
 
 //api de registro
 import { create } from '../../../../services/event'
+import {email} from '../../../../services/email';
 
 
 //componentes
@@ -37,6 +38,12 @@ function Ingresso({ data, index}) {
         color: 'red'
     };
 
+    function handleEmail(eventId){
+        let status;
+        const response = email({eventId}).then(res => status = res.status);
+        console.log(status);
+    }
+
     async function handleRegister(e) {
         e.preventDefault();
 
@@ -67,6 +74,9 @@ function Ingresso({ data, index}) {
         try {
             let id;
             const response = await create.post('#', struct).then(res => id = res.data);
+            
+            handleEmail(id);
+
             history.push('/evento/' + id);
         } catch (err) {
             alert('Erro no cadastro, tente novamente.');

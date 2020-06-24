@@ -109,7 +109,7 @@ function Detalhes({change, index}) {
               <Col sm={2}>
               <FormGroup>
                   <h5>Capacidade: <span style={color}>*</span></h5>
-                  <Input type="text"
+                  <Input type="number"
                     name="lugar"
                     id="lugar"
                     value={capacidade}
