@@ -3,6 +3,9 @@ import { useHistory, Link } from 'react-router-dom';
 
 import { FiCalendar, FiNavigation2, FiUser, FiMapping } from 'react-icons/fi';
 
+import { exportacao } from '../../services/event';
+import fileDownload from 'js-file-download';
+
 import { event } from '../../services/event'
 
 //import toolbar
@@ -95,6 +98,15 @@ const Evento = (props) => {
       history.push('/')
     }
   }
+
+  function downloadFile(data){
+        fileDownload(data, 'event.txt');
+      }
+
+ async function exportEvent(){
+    
+       const response = exportacao({eventId}).then(res => downloadFile(res.data));
+      }
 
   useEffect(() => {
     handleEvent();
@@ -198,6 +210,7 @@ const Evento = (props) => {
       <div className="btn-container">
 
         <div className="btn-reserve">
+          <button type="submit" onClick={exportEvent}>Exportação</button>
           <button type="button">Reservar Ingresso</button>
         </div>
 
