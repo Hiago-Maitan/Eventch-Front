@@ -15,4 +15,7 @@ const update = ({ eventId }) => axios.create({
 
 })
 
-export {event, eventList, update, create};
+const exportacao = ({ eventId }) => axios.get(`https://eventech-back.herokuapp.com/events/file/${eventId}`)
+
+export {event, eventList, update, create, exportacao};
+

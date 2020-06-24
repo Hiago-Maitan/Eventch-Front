@@ -89,11 +89,13 @@
 .flex div+div {
     margin-left: 400px;
     margin-top: -200px;
+    margin-bottom: 20px;
 }
 
 .flex div+div+div {
-    margin-left: 80px;
-    margin-top: 0px;
+    margin-left: 720px;
+    margin-top: -200px;
+    margin-bottom: 50px;
 }
 
 .line .color-container .company {
