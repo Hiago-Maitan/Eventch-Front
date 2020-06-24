@@ -149,12 +149,7 @@ const Evento = (props) => {
 
   const handleSideClose = () => setOpen(false);
   const handleSideOpen = () => setOpen(true);
-
-  const [sideDrawerOpen, setOpen] = useState(false);
-
-  const handleSideClose = () => setOpen(false);
-  const handleSideOpen = () => setOpen(true);
-
+  
   let backdrop;
 
   if (sideDrawerOpen) {
