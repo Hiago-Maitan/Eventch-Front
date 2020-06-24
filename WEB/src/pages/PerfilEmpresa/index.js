@@ -47,6 +47,11 @@ const history = useHistory();
 
 let eventId = props.match.params.id;
 
+//import api
+import {companyById} from '../../services/company'
+
+export default function PerfilEmpresa(){
+
     const [company, setCompany] = useState(
         {
             Id: 0,
@@ -104,17 +109,24 @@ let eventId = props.match.params.id;
               <div className="dados">
               <h1>{company.FantasyName}</h1>
               <h2>{company.Phone}</h2>
-                <h2>tivit@yahoo.com</h2>
+               <h2>tivit@yahoo.com</h2>
         </div>
         </div> 
 
         <div className="company">
+
+                <h2>{company.Email}</h2>
+        </div>
+        </div> 
+
+        <div class="company">
         <div className="text-flex2">
             <img src={Work}/>
             <div className="dados">
             <h1>{company.SocialReason}</h1>
             <h2 className="about">{company.About}.</h2>
         </div>
+
         </div>
     </div>
         
@@ -122,6 +134,14 @@ let eventId = props.match.params.id;
 
     <div className="text-flex">
         <h3>DADOS GERAIS</h3>
+
+    </div>
+        
+    </div>
+
+    <div class="text-flex">
+        <h3>DASHBOARD</h3>
+
     </div>
 
     <div className="flex">
