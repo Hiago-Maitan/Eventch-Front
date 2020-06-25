@@ -11,11 +11,7 @@ function UserInfo() {
     let linkPerfil = localStorage.getItem('is_company');
 
     const handleLoggout = () => {
-        localStorage.removeItem('isAuthenticated');
-        localStorage.removeItem('expirationDate');
-        localStorage.removeItem('Username');
-        localStorage.removeItem('userId');
-        localStorage.removeItem('is_company');
+        localStorage.clear();
     }
 
     if (isLogged) {

@@ -16,7 +16,54 @@
 }
 
 .list-placeholder{
+  margin-top: 5rem;
+}
+
+.events-container{
   padding: 5rem;
+}
+
+.about{
+  font-family: 'Open Sans', sans-serif;
+  background-color: var(--secondary-color);
+  padding: 5rem;
+}
+
+.about h1{
+  color: white;
+}
+
+.about h4{
+  margin-top: 1.5rem;
+  font-weight: lighter;
+  color: white;
+}
+
+.about-inovation{
+  margin-top: 5rem;
+  display: flex;
+  align-items: center;
+}
+
+.about-inovation h2{
+  color: white;
+  padding: 5rem;
+  text-align: right;
+}
+
+.about-inovation img{
+  width: 550px;
+  height: 350px;
+}
+
+.events-container h2{
+  font-family: 'Open Sans', sans-serif;
+  text-align: start;
+  text-decoration: underline;
+  text-decoration-style: solid;
+  text-decoration-color: var(--third-color);
+  color: var(--third-color);
+  font-weight: lighter;
 }
 
 div.teste{

@@ -91,11 +91,24 @@ const Evento = (props) => {
     if (eventId > 0) {
       try {
         const response = await event({ eventId }).then(res => {setEvent(res.data)});
+        
+    handleEventsIds(eventId);
       } catch (err) {
         history.push('/')
       }
     } else {
       history.push('/')
+    }
+  }
+
+  function handleEventsIds(eventId){
+    let Ids = localStorage.getItem('events') != null ? localStorage.getItem('events').split(",")  : [];
+    if(Ids == null){
+      Ids.unshift(eventId);
+      localStorage.setItem('events',Ids);
+    } else{
+      Ids.unshift(eventId);
+      localStorage.setItem('events',Ids);
     }
   }
 

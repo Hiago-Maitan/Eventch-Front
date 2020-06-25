@@ -8,6 +8,8 @@ import UserWhite from '../../Image/user_white.png';
 import {pilha} from '../../services/event';
 import axios from 'axios';
 
+import PerfilList from '../../components/PerfilList/PerfilList';
+
 //userById
 import {userById} from '../../services/user';
 
@@ -57,7 +59,7 @@ export default function PerfilUsuario() {
         handleUser();
       },[])
 
-      async function handlePilha(){
+/*      async function handlePilha(){
           try {
             const response = axios.get(`https://eventech-back.herokuapp.com/v2/historys/`).then(res => 
             {setHistory(res.data)});
@@ -69,7 +71,7 @@ export default function PerfilUsuario() {
         handlePilha();
       },[])
 
-
+*/
      const [sideDrawerOpen, setOpen] = useState(false);
 
      const handleSideClose = () => setOpen(false);
@@ -91,97 +93,26 @@ export default function PerfilUsuario() {
 
         <div>
             <div className="color-container">
-            
-                <div className="text-flex2">
+              <div className="user-perfil">
                   <img src={UserWhite}/>
-                  <div className="dados">
+                  <div className="about-perfil">
                     <h1>{user.Name} {user.Surname}</h1>
                     <h2>Phone: {user.Phone}</h2>
                     <h2>E-mail: {user.Email}</h2>
                     
-                  </div>   
+                  </div>  
+                </div> 
                 </div>
 
             </div>
 
+            <div className="history-placeholder">
             <div className="text-flex">
                 <h3>HISTÓRICO DE EVENTOS</h3>
-                <h3>MEUS INGRESSOS</h3>
             </div>
+                <PerfilList />
+            </div>    
 
-            <div className="container-historico">
-                <div className="hist1">
-                    <h5 className="nome-evento"><b>{history.nameEvent}</b></h5>
-                    <h5 className="empresa">{history.nameCompany}</h5>
-                    <h5 className="categoria">{history.nameCategory}</h5>
-                </div>
-            </div>
-
-            <div className="container-historico">
-                <div className="hist1">
-                    <h5 className="nome-evento"><b>Técnicas de UX</b></h5>
-                    <h5 className="empresa">Stefaninni</h5>
-                    <h5 className="categoria">Palestra</h5>
-                </div>
-            </div>
-
-            <div className="container-historico">
-                <div className="hist1">
-                    <h5 className="nome-evento"><b>Técnicas de UX</b></h5>
-                    <h5 className="empresa">Stefaninni</h5>
-                    <h5 className="categoria">Palestra</h5>
-                </div>
-            </div>
-
-            <div className="container-historico">
-                <div className="hist1">
-                    <h5 className="nome-evento"><b>Técnicas de UX</b></h5>
-                    <h5 className="empresa">Stefaninni</h5>
-                    <h5 className="categoria">Palestra</h5>
-                </div>
-            </div>
-
-             <div className="container-historico">
-                <div className="hist1">
-                    <h5 className="nome-evento"><b>Técnicas de UX</b></h5>
-                    <h5 className="empresa">Stefaninni</h5>
-                    <h5 className="categoria">Palestra</h5>
-                </div>
-            </div> 
-
-            <div className="container-historico">
-                <div className="hist1">
-                    <h5 className="nome-evento"><b>Técnicas de UX</b></h5>
-                    <h5 className="empresa">Stefaninni</h5>
-                    <h5 className="categoria">Palestra</h5>
-                </div>
-            </div>
-
-             <div className="container-historico">
-                <div className="hist1">
-                    <h5 className="nome-evento"><b>Técnicas de UX</b></h5>
-                    <h5 className="empresa">Stefaninni</h5>
-                    <h5 className="categoria">Palestra</h5>
-                </div>
-            </div>
-
-             <div className="container-historico">
-                <div className="hist1">
-                    <h5 className="nome-evento"><b>Técnicas de UX</b></h5>
-                    <h5 className="empresa">Stefaninni</h5>
-                    <h5 className="categoria">Palestra</h5>
-                </div>
-            </div>
-
-             <div className="container-historico">
-                <div className="hist1">
-                    <h5 className="nome-evento"><b>Técnicas de UX</b></h5>
-                    <h5 className="empresa">Stefaninni</h5>
-                    <h5 className="categoria">Palestra</h5>
-                </div>
-            </div>
-
-        </div>
         </div>
 
     );

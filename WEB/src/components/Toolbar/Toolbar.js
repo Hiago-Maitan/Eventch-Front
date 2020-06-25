@@ -16,7 +16,6 @@ const toolbar = props => (
                 <ul>
                     <li><a href="/" >Home</a></li> 
                     <li><a href="/registroEvento" >Publicar Eventos</a></li>
-                    <li><a href="/" >Sobre Nós</a></li>
                 </ul>
             </div>
             <div className="login-placeholder">

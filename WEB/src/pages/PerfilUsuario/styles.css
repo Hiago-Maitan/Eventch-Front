@@ -10,26 +10,7 @@
     color: #1ABC9C;
 }
 
-.color-container h1 {
-    color: white;
-    font-size: 160%;
-    margin-left: 270px;
-    margin-top: -3px;
-}
 
-.color-container h2 {
-    color: white;
-    font-size: 130%;
-    margin-left: 270px;
-    margin-top: 5px;
-}
-
-.color-container img {
-    height: 80px;
-    width: 80px;
-    margin-left: 100px;
-    margin-top: 4%;
-}
 
 /*.color-container .text-flex img+.flex {
     display: flex;
@@ -56,15 +37,12 @@
     margin-left: 100px;
 }
 
-.container-historico {
-    margin: 0;
-    background-color: white;
-    padding: 23px;
-    border-radius: 2px;
-    margin-left: 80px;
-    margin-right: 650px;
-    margin-bottom: 20px;
-    box-shadow: rgba(0, 0, 0, 0.50) 1px 1px 4px 4px;
+.history-placeholder {
+    background: #FFFFFF;
+    border: 1px solid #AAAAAA;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin: 130px 66px 66px 66px;
+    padding: 2rem;
 }
 
 .container-historico .hist1 {

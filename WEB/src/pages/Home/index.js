@@ -22,6 +22,9 @@ import Toolbar from '../../components/Toolbar/Toolbar'
 import SideDrawer from '../../components/SideDrawer/SideDrawer';
 import Backdrop from '../../components/Backdrop/Backdrop'
 
+// imagens
+import imgEmail from './img/email.jpg';
+
 
 const styles = {
   fontFamily: "sans-serif",
@@ -52,22 +55,27 @@ export default function Home() {
 
       <div style={styles}>
         <Parallax bgImage={require('../../Image/Teste.jpg')} strength={500}>
-
           <h1 className="blocktext">Não procure por eventos, a eventech fará isso por você.</h1>
           <div style={{ height: 220 }}>
           </div>
         </Parallax>
-
-
-
         <Toolbar handleSideOpen={handleSideOpen} />
         <SideDrawer show={sideDrawerOpen} />
         {backdrop}
-
-        <div className="list-placeholder">
-          <List/>
+        <div className="events-container">
+          <h2>Em destaque</h2>
+          <div className="list-placeholder">
+            <List />
+          </div>
         </div>
-
+        <div className="about">
+          <h1>Proposta Eventech</h1>
+          <h4>Visamos conectar eventos á pessoas, de um jeito único e objetivo!</h4>
+          <div className="about-inovation">
+            <h2>Com um envio de e-mail interativo para eventos de interesse do usuário</h2>
+            <img src={imgEmail} />
+          </div>
+        </div>
       </div>
 
 

@@ -13,7 +13,6 @@ import viacep from '../../../../services/viacep'
 import Sections from '../Sections/Sections'
 
 function Detalhes({change, index}) {
-  console.log(index);
     //lugar
   const [lugar,setLugar] = useState('');
   const [descricao, setDescricao] = useState('');
