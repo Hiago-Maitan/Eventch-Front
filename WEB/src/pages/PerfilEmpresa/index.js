@@ -101,26 +101,26 @@ export default function PerfilEmpresa() {
         <div className="flex">
 
           <div className="container-totalEvento">
-            <div className="hist1">
+            <div className="align-card">
               <h6 className="gambs">.</h6>
               <span>Total de eventos:</span>
-              <h3>{company.TotalEvents}</h3>
+              <h2>{company.TotalEvents}</h2>
             </div>
           </div>
 
           <div className="container-totalEvento">
-            <div className="hist1">
+            <div className="align-card">
               <h6 className="gambs">.</h6>
               <span>Total de ingressos:</span>
-              <h3>0</h3>
+              <h2>0</h2>
             </div>
           </div>
 
           <div className="container-totalEvento">
-            <div className="hist1">
+            <div className="align-card">
               <h6 className="gambs">.</h6>
               <span>Total arrecadado:</span>
-              <h3>R$0,00</h3>
+              <h2>R$0,00</h2>
             </div>
           </div>
 

@@ -47,6 +47,15 @@
 
 }
 
+.align-card{
+    text-align: center;
+}
+
+.align-card h2{
+    margin-top: 2rem;
+    color: white;
+}
+
 .color-container .company{
     width: 52%;
     font-size: 95%;
